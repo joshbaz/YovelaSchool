@@ -3,6 +3,7 @@ import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { themeSettings } from "./theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./screens/layout";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
   return (
@@ -12,7 +13,9 @@ function App() {
           <CssBaseline />
 
           <Routes>
-            <Route path="/" element={<div>home</div>} />
+            <Route element={<Layout />}>
+              <Route path="/" element={<div>home</div>} />
+            </Route>
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
