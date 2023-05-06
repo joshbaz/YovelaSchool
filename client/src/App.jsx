@@ -13,9 +13,18 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route element={<Layout />}>
+            
               <Route path="/" element={<Home />} />
-            </Route>
+              <Route path="/ourschool/aboutus" element={<Home />} />
+
+              <Route path="/ourschool/statementoffaith" element={<Home />} />
+              <Route path="/acdemics/ace" element={<Home />} />
+              <Route path="/admissions/process" element={<Home />} />
+              <Route path="/schoollife/conventions" element={<Home />} />
+              <Route path="/schoollife/extracurricular" element={<Home />} />
+              <Route path="/contactus" element={<Home />} />
+              <Route path="/appointment" element={<Home />} />
+         
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
