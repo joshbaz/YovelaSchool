@@ -10,6 +10,7 @@ const menuData = [
   {
     title: "Our School",
     areaControls: "Our-School",
+    url: "/ourschool",
     subData: [
       {
         title: "About us",
@@ -22,6 +23,7 @@ const menuData = [
   {
     title: "Academics",
     areaControls: "Academics",
+    url: "/acdemics",
     subData: [
       {
         title: "ACE CURRICULUM",
@@ -31,6 +33,7 @@ const menuData = [
   {
     title: "Admission",
     areaControls: "Admission",
+    url: "/admissions",
     subData: [
       {
         title: "ADMISSION PROCESS",
@@ -40,6 +43,7 @@ const menuData = [
   {
     title: "School life",
     areaControls: "School-life",
+    url: "/schoollife",
     subData: [
       {
         title: "Extra-curricular activities",
@@ -51,6 +55,7 @@ const menuData = [
   },
   {
     title: "Contact us",
+    url: "/contactus",
     areaControls: "Contact-us",
   },
 ];
@@ -117,18 +122,18 @@ const Navbar = () => {
           width: "100%",
           position: navSolid ? "fixed" : "relative",
           top: 0,
+          zIndex: 30,
         }}
       >
         <Box
           display="flex"
           justifyContent={"center"}
-          bgcolor={palette.whites[500]}
+          bgcolor={navSolid ? palette.whites[500] : palette.whites[500]}
           sx={{
-            opacity: "70%",
+            opacity: navSolid ? "100%" : "70%",
             position: "absolute",
             top: 0,
             width: "100%",
-            color: "black",
           }}
         >
           <nav>
@@ -139,7 +144,9 @@ const Navbar = () => {
                 color={palette.tertiary[500]}
               >
                 {menuData.map((data, index) => {
-                  return <MenuItems items={data} key={index} />;
+                  return (
+                    <MenuItems navsolid={navSolid} items={data} key={index} />
+                  );
                 })}
               </FlexBetween>
             </ul>
