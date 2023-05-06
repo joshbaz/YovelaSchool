@@ -1,8 +1,9 @@
-import { Button } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Dropdown from "./Dropdown";
 import { styled } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const MenuItemWrap = styled("li")(({ theme }) => ({
   textDecoration: "none",
@@ -10,7 +11,8 @@ const MenuItemWrap = styled("li")(({ theme }) => ({
   borderRadius: "4px",
 }));
 
-const MenuItems = ({ items }) => {
+const MenuItems = ({ items, navsolid }) => {
+  const { palette } = useTheme();
   const [dropdown, setDropDown] = React.useState(false);
 
   let ref = React.useRef();
@@ -44,19 +46,31 @@ const MenuItems = ({ items }) => {
     >
       {items.subData ? (
         <>
-          <Button
-            type="button"
-            aria-haspopup="menu"
-            aria-expanded={dropdown ? "true" : "false"}
-            onClick={() => setDropDown((prev) => !prev)}
-            endIcon={<KeyboardArrowDownIcon />}
-          >
-            {items.title}
-          </Button>
+          <Link type="button">
+            <Button
+              aria-haspopup="menu"
+              aria-expanded={dropdown ? "true" : "false"}
+              onClick={() => setDropDown((prev) => !prev)}
+              endIcon={<KeyboardArrowDownIcon />}
+              sx={{
+                color: navsolid ? palette.primary[500] : palette.tertiary[500],
+              }}
+            >
+              {items.title}
+            </Button>
+          </Link>
           <Dropdown submenus={items.subData} dropdown={dropdown} />
         </>
       ) : (
-        <Button>{items.title}</Button>
+        <Link to={items.url} >
+          <Button
+            sx={{
+              color: navsolid ? palette.primary[500] : palette.tertiary[500],
+            }}
+          >
+            {items.title}
+          </Button>
+        </Link>
       )}
     </MenuItemWrap>
   );
