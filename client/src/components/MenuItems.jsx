@@ -62,6 +62,7 @@ const MenuItems = ({ items, navsolid }) => {
                 color: navsolid ? palette.primary[500] : palette.tertiary[500],
                 height: "100%",
                 backgroundColor: "inherit",
+
                 "&:hover": {
                   color: navsolid
                     ? palette.primary[900]
