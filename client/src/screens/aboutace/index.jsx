@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Stack, useTheme, Typography } from "@mui/material";
+import { Box, Stack, useTheme, Typography, Divider } from "@mui/material";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
 import PageHeader from "../../components/PageHeader";
@@ -85,16 +85,109 @@ const AboutAce = () => {
         bgcolor={palette.whites[100]}
         gap="25px"
       >
-        <Typography variant="body1" color="initial">
+        <Typography
+          variant="h1"
+          color={palette.secondary[700]}
+          sx={{ fontWeight: "500", fontSize: "30px" }}
+        >
           Three Levels Of ICCE Certification
         </Typography>
 
-        <CustomStack >
-        
+        <CustomStack flexDirection={"row"} gap="25px">
+          <CustomStack flexDirection={"column"} maxWidth="380px" gap="10px">
+            <Typography
+              variant="body1"
+              color={palette.tertiary[600]}
+              sx={{ fontSize: "18px", fontWeight: "600", lineHeight: "22px" }}
+            >
+              ICCE GENERAL CERTIFICATE
+            </Typography>
+            <Typography
+              variant="body1"
+              color={palette.tertiary[500]}
+              sx={{ fontWeight: "400", fontSize: "16px", lineHeight: "24px" }}
+            >
+              The General Certificate requires a similar level of work needed to
+              obtain GCSEs. It covers English, Mathematics, Science, History,
+              Geography, Biblical Studies, and a number of options chosen by the
+              student which would normally include Information Technology.
+            </Typography>
+          </CustomStack>
+          <Divider orientation="vertical" />
+          <CustomStack flexDirection={"column"} maxWidth="380px" gap="10px">
+            <Typography
+              variant="body1"
+              color={palette.tertiary[600]}
+              sx={{ fontSize: "18px", fontWeight: "600", lineHeight: "22px" }}
+            >
+              ICCE INTERMEDIATE CERTIFICATE
+            </Typography>
+            <Typography
+              variant="body1"
+              color={palette.tertiary[500]}
+              sx={{ fontWeight: "400", fontSize: "16px", lineHeight: "24px" }}
+            >
+              The Intermediate Certificate is at a similar standard to AS Level.
+              Again, it includes courses in English, Mathematics and Science,
+              building on the knowledge already acquired. There are additional
+              courses in the Humanities including Biblical Studies.
+            </Typography>
+          </CustomStack>
+          <Divider orientation="vertical" />
+          <CustomStack flexDirection={"column"} maxWidth="380px" gap="10px">
+            <Typography
+              variant="body1"
+              color={palette.tertiary[600]}
+              sx={{ fontSize: "18px", fontWeight: "600", lineHeight: "22px" }}
+            >
+              ICCE ADVANCED CERTIFICATE
+            </Typography>
+            <Typography
+              variant="body1"
+              color={palette.tertiary[500]}
+              sx={{ fontWeight: "400", fontSize: "16px", lineHeight: "24px" }}
+            >
+              Many students completing this certificate go on to study at degree
+              level. The programme content is determined by the student’s
+              intended degree course or future career aspirations.
+            </Typography>
+          </CustomStack>
         </CustomStack>
       </CustomStack>
 
       {/** icce recognition */}
+
+      <CustomStack
+        flexDirection={"column"}
+        width="100%"
+        alignItems="center"
+        padding="46px 0"
+        bgcolor={palette.whites[500]}
+        gap="25px"
+      >
+        <Typography
+          variant="h1"
+          color={palette.secondary[700]}
+          sx={{ fontWeight: "500", fontSize: "30px" }}
+        >
+          ICCE INTERMEDIATE CERTIFICATE
+        </Typography>
+        <Typography
+          variant="body1"
+          color="initial"
+          sx={{
+            fontSize: "20px",
+            fontWeight: "400",
+            maxWidth: "821px",
+            textAlign: "center",
+          }}
+        >
+          The Intermediate Certificate is at a similar standard to AS Level.
+          Again, it includes courses in English, Mathematics and Science,
+          building on the knowledge already acquired. There are additional
+          courses in the Humanities including Biblical Studies.
+        </Typography>
+      </CustomStack>
       <Footer />
     </Container>
   );
