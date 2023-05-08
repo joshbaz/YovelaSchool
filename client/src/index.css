@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,6 +14,7 @@ body,
   width: 100%;
   font-family: "Inter", sans-serif;
   background-color: #1f2026;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -52,6 +52,9 @@ body,
   text-align: left;
 }
 
+.mySwiper {
+  height: 100%;
+}
 .swiper {
   width: 100%;
   height: 100%;
