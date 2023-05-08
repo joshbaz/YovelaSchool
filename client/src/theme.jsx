@@ -39,7 +39,7 @@ export const tokens = {
   },
 
   white: {
-    100: "#fefdfd",
+    100: "#FFFDFC",
     200: "#fdfbfa",
     300: "#fcfaf8",
     400: "#fbf8f5",
