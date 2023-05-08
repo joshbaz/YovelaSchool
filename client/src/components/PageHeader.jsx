@@ -10,7 +10,6 @@ const PageHeader = ({ title, headerimage }) => {
       bgcolor={palette.primary[500]}
       m="0"
       p="0"
-      spacing={0}
       height="50vh"
     >
       <Box
