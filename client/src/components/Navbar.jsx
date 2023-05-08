@@ -14,9 +14,11 @@ const menuData = [
     subData: [
       {
         title: "About us",
+        url: "/ourschool/aboutus",
       },
       {
         title: "Statement of Faith",
+        url: "/ourschool/statementoffaith",
       },
     ],
   },
@@ -27,6 +29,7 @@ const menuData = [
     subData: [
       {
         title: "ACE CURRICULUM",
+        url: "/acdemics/ace",
       },
     ],
   },
@@ -37,6 +40,7 @@ const menuData = [
     subData: [
       {
         title: "ADMISSION PROCESS",
+        url: "/admissions/process",
       },
     ],
   },
@@ -47,9 +51,11 @@ const menuData = [
     subData: [
       {
         title: "Extra-curricular activities",
+        url: "/schoollife/extracurricular",
       },
       {
         title: "conventions",
+        url: "/schoollife/conventions",
       },
     ],
   },
@@ -134,6 +140,14 @@ const Navbar = () => {
             position: "absolute",
             top: 0,
             width: "100%",
+            ".activeItem": {
+              backgroundColor: navSolid
+                ? palette.primary[50]
+                : palette.tertiary[50],
+            },
+            ".mainNavItem": {
+              height: "40px",
+            },
           }}
         >
           <nav>

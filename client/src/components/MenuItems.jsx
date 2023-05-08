@@ -3,7 +3,7 @@ import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Dropdown from "./Dropdown";
 import { styled } from "@mui/system";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MenuItemWrap = styled("li")(({ theme }) => ({
   textDecoration: "none",
@@ -46,7 +46,13 @@ const MenuItems = ({ items, navsolid }) => {
     >
       {items.subData ? (
         <>
-          <Link type="button">
+          <NavLink
+            to={items.url}
+            role="button"
+            className={({ isActive }) =>
+              isActive ? "activeItem mainNavItem" : "mainNavItem"
+            }
+          >
             <Button
               aria-haspopup="menu"
               aria-expanded={dropdown ? "true" : "false"}
@@ -54,23 +60,50 @@ const MenuItems = ({ items, navsolid }) => {
               endIcon={<KeyboardArrowDownIcon />}
               sx={{
                 color: navsolid ? palette.primary[500] : palette.tertiary[500],
+                height: "100%",
+                backgroundColor: "inherit",
+                "&:hover": {
+                  color: navsolid
+                    ? palette.primary[900]
+                    : palette.tertiary[500],
+                  bgcolor: navsolid
+                    ? palette.primary[100]
+                    : palette.tertiary[50],
+                  opacity: "100%",
+                },
               }}
             >
               {items.title}
             </Button>
-          </Link>
-          <Dropdown submenus={items.subData} dropdown={dropdown} />
+          </NavLink>
+          <Dropdown
+            submenus={items.subData}
+            dropdown={dropdown}
+            navsolid={navsolid}
+          />
         </>
       ) : (
-        <Link to={items.url} >
+        <NavLink
+          to={items.url}
+          className={({ isActive }) =>
+            isActive ? "activeItem mainNavItem" : "mainNavItem"
+          }
+        >
           <Button
             sx={{
               color: navsolid ? palette.primary[500] : palette.tertiary[500],
+              height: "100%",
+              backgroundColor: "inherit",
+              "&:hover": {
+                color: navsolid ? palette.primary[900] : palette.tertiary[500],
+                bgcolor: navsolid ? palette.primary[100] : palette.tertiary[50],
+                opacity: "100%",
+              },
             }}
           >
             {items.title}
           </Button>
-        </Link>
+        </NavLink>
       )}
     </MenuItemWrap>
   );
