@@ -80,7 +80,7 @@ const Navbar = () => {
         height="100%"
         bgcolor={palette.whites[500]}
         sx={{
-          height: [50, 100, 100],
+          height: [50, 100, 120],
         }}
       >
         {/** logo */}
@@ -88,8 +88,8 @@ const Navbar = () => {
           alt="Yovela School Logo"
           src={Logos}
           sx={{
-            height: [50, 100, 100],
-            width: [50, 100, 100],
+            height: [50, 100, 120],
+            width: [50, 100, 120],
             marginBottom: "0.5rem",
           }}
         />
