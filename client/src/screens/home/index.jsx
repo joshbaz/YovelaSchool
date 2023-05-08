@@ -32,6 +32,7 @@ import PrincipalPhoto from "../../assets/Principal.png";
 
 import exPhoto1 from "../../assets/exPhoto1.png";
 import exPhoto2 from "../../assets/exPhoto2.png";
+import Footer from "../../components/Footer";
 const cirriculumContent = [
   {
     title: "Ace curriculum school",
@@ -451,11 +452,7 @@ const Home = () => {
             <Typography
               variant="body1"
               color={palette.tertiary[400]}
-              sx={{
-                fontWeight: "400",
-                fontSize: "20px",
-                textAlign: "justify",
-              }}
+              sx={{ fontSize: "18px", textAlign: "justify" }}
             >
               Lorem ipsum dolor sit amet consectetur. Et mi urna libero
               vestibulum eleifend elementum ac suscipit neque. Pellentesque
@@ -481,7 +478,7 @@ const Home = () => {
 
       {/** slider for exciting acitivities */}
 
-      <Box bgcolor={palette.tertiary[500]}>
+      <Box bgcolor={palette.tertiary[500]} height="350px">
         <Swiper
           scrollbar={{ hide: true }}
           modules={[Navigation, Pagination, Scrollbar]}
@@ -499,6 +496,9 @@ const Home = () => {
           })}
         </Swiper>
       </Box>
+
+      {/** footer */}
+      <Footer />
     </Container>
   );
 };
