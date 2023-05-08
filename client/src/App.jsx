@@ -5,6 +5,8 @@ import { themeSettings } from "./theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./screens/layout";
 import Home from "./screens/home/index.jsx";
+import AboutUs from "./screens/aboutus";
+import AboutAce from "./screens/aboutace";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
   return (
@@ -13,18 +15,16 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            
-              <Route path="/" element={<Home />} />
-              <Route path="/ourschool/aboutus" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/ourschool/aboutus" element={<AboutUs />} />
 
-              <Route path="/ourschool/statementoffaith" element={<Home />} />
-              <Route path="/acdemics/ace" element={<Home />} />
-              <Route path="/admissions/process" element={<Home />} />
-              <Route path="/schoollife/conventions" element={<Home />} />
-              <Route path="/schoollife/extracurricular" element={<Home />} />
-              <Route path="/contactus" element={<Home />} />
-              <Route path="/appointment" element={<Home />} />
-         
+            <Route path="/ourschool/statementoffaith" element={<Home />} />
+            <Route path="/acdemics/ace" element={<AboutAce />} />
+            <Route path="/admissions/process" element={<Home />} />
+            <Route path="/schoollife/conventions" element={<Home />} />
+            <Route path="/schoollife/extracurricular" element={<Home />} />
+            <Route path="/contactus" element={<Home />} />
+            <Route path="/appointment" element={<Home />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
