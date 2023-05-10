@@ -49,6 +49,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
+         alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -61,7 +62,11 @@ const AdmissionProcess = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1" color="initial" sx={{ fontSize: "80px" }}>
+          <Typography
+            variant="body1"
+            color={palette.whites[500]}
+            sx={{ fontSize: "80px", fontWeight: "200" }}
+          >
             1
           </Typography>
         </Box>
@@ -105,6 +110,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
+         alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -117,7 +123,11 @@ const AdmissionProcess = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1" color="initial" sx={{ fontSize: "80px" }}>
+          <Typography
+            variant="body1"
+            color={palette.whites[500]}
+            sx={{ fontSize: "80px", fontWeight: "200" }}
+          >
             2
           </Typography>
         </Box>
@@ -154,6 +164,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
+         alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -166,7 +177,11 @@ const AdmissionProcess = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1" color="initial" sx={{ fontSize: "80px" }}>
+          <Typography
+            variant="body1"
+            color={palette.whites[500]}
+            sx={{ fontSize: "80px", fontWeight: "200" }}
+          >
             3
           </Typography>
         </Box>
@@ -201,6 +216,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
+        alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -213,12 +229,16 @@ const AdmissionProcess = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1" color="initial" sx={{ fontSize: "80px" }}>
+          <Typography
+            variant="body1"
+            color={palette.whites[500]}
+            sx={{ fontSize: "80px", fontWeight: "200" }}
+          >
             4
           </Typography>
         </Box>
 
-        <CustomStack flexDirection={"column"} gap="30px" width={"811px"}>
+        <CustomStack flexDirection={"column"} gap="14px" width={"811px"}>
           <Typography
             variant="h1"
             color={palette.secondary[700]}

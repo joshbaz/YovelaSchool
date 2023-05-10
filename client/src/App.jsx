@@ -8,6 +8,7 @@ import Home from "./screens/home/index.jsx";
 import AboutUs from "./screens/aboutus";
 import AboutAce from "./screens/aboutace";
 import AdmissionProcess from "./screens/admissionprocess";
+import Clubs from "./screens/clubs";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
   return (
@@ -23,7 +24,7 @@ function App() {
             <Route path="/acdemics/ace" element={<AboutAce />} />
             <Route path="/admissions/process" element={<AdmissionProcess />} />
             <Route path="/schoollife/conventions" element={<Home />} />
-            <Route path="/schoollife/extracurricular" element={<Home />} />
+            <Route path="/schoollife/extracurricular" element={<Clubs />} />
             <Route path="/contactus" element={<Home />} />
             <Route path="/appointment" element={<Home />} />
           </Routes>
