@@ -25,6 +25,16 @@ import activityministry from "../../assets/ActivityMinistry.png";
 import activitysport from "../../assets/ActivitySport.png";
 import activitymusic from "../../assets/ActivityMusic.png";
 
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+
+import moments1 from "../../assets/moments1.png";
+import moments2 from "../../assets/moments2.png";
+import moments3 from "../../assets/moments3.png";
+import moments4 from "../../assets/moments4.png";
+import moments5 from "../../assets/moments5.png";
+import moments6 from "../../assets/moments6.png";
+
 const ActivityList = [
   {
     title: "Ministry",
@@ -37,6 +47,41 @@ const ActivityList = [
   {
     title: "Music",
     images: activitymusic,
+  },
+];
+
+const MomentsList = [
+  {
+    title: "",
+    images: moments1,
+  },
+  {
+    title: "",
+    images: moments2,
+  },
+  {
+    title: "",
+    images: moments3,
+  },
+  {
+    title: "",
+    images: moments4,
+  },
+  {
+    title: "",
+    images: moments5,
+  },
+  {
+    title: "",
+    images: moments6,
+  },
+  {
+    title: "",
+    images: moments4,
+  },
+  {
+    title: "",
+    images: moments2,
   },
 ];
 const Container = styled(Stack)(({ theme }) => ({
@@ -55,6 +100,8 @@ const Container = styled(Stack)(({ theme }) => ({
 }));
 const Clubs = () => {
   const { palette } = useTheme();
+  const navigationPrevRef = React.useRef(null);
+  const navigationNextRef = React.useRef(null);
   return (
     <Container gap={"0px"}>
       <CustomStack flexDirection={"column"} height="100% ">
@@ -158,10 +205,9 @@ const Clubs = () => {
         <CustomStack overflow={"hidden"} width="100%">
           <Swiper
             scrollbar={{ hide: true }}
-            slidesPerView={2}
+            slidesPerView={3}
             spaceBetween={20}
             className="mySwiper swiper2"
-            module={[Navigation]}
           >
             {ActivityList.map((data, index) => {
               return (
@@ -198,17 +244,63 @@ const Clubs = () => {
               );
             })}
 
-            <div className="swiper-button-prev">
-              <Icon icon="bi:arrow-left-short" width="60px" height="60px" />
-            </div>
-            <div className="swiper-button-next">
+            <Box
+              height="50px"
+              width="50px"
+              className="..swiper-button-prev"
+              ref={navigationPrevRef}
+            >
+              <Icon icon="bi:arrow-left-short" width="50px" height="50px" />
+            </Box>
+            <Box
+              height="50px"
+              width="50px"
+              className="..swiper-button-next"
+              ref={navigationNextRef}
+            >
               <Icon icon="bi:arrow-right-short" width="60px" height="60px" />
-            </div>
+            </Box>
           </Swiper>
         </CustomStack>
       </CustomStack>
 
       {/** club moments */}
+      <CustomStack
+        flexDirection={"column"}
+        width="100%"
+        alignItems="center"
+        padding="43px 90px"
+        bgcolor={palette.whites[100]}
+        gap="25px"
+      >
+        <Typography
+          variant="h1"
+          color={palette.secondary[700]}
+          sx={{ fontWeight: "500", fontSize: "30px" }}
+        >
+          Moments at Yovela
+        </Typography>
+        <ImageList
+          sx={{ width: "100%", height: "642.33px" }}
+          cols={4}
+          rowHeight={321.33}
+          gap="0"
+        >
+          {MomentsList.map((item) => (
+            <ImageListItem key={item.img}>
+              <img
+                src={`${item.images}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${item.images}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </CustomStack>
+
+      {/** footer */}
+      <Footer />
     </Container>
   );
 };
