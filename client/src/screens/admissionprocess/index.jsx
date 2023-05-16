@@ -1,13 +1,5 @@
-import React from "react";
 import { styled } from "@mui/system";
-import {
-  Box,
-  Stack,
-  useTheme,
-  Typography,
-  Divider,
-  Button,
-} from "@mui/material";
+import { Box, Stack, useTheme, Typography, Button } from "@mui/material";
 import Footer from "../../components/Footer";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
@@ -49,7 +41,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
-         alignItems={"center"}
+        alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -110,7 +102,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
-         alignItems={"center"}
+        alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -164,7 +156,7 @@ const AdmissionProcess = () => {
         gap="67px"
         justifyContent={"center"}
         padding={"75px 0"}
-         alignItems={"center"}
+        alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}

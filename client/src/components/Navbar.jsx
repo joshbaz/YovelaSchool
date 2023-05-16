@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { useTheme, Box, Avatar, Typography, Button } from "@mui/material";
 
 import MenuItems from "./MenuItems";
+import { useNavigate } from "react-router-dom";
 
 const menuData = [
   {
@@ -19,6 +20,14 @@ const menuData = [
       {
         title: "Statement of Faith",
         url: "/ourschool/statementoffaith",
+      },
+      {
+        title: "Board of Governors",
+        url: "/ourschool/boardofgovernors",
+      },
+      {
+        title: "Careers",
+        url: "/ourschool/careers",
       },
     ],
   },
@@ -69,6 +78,7 @@ const menuData = [
 const Navbar = () => {
   const { palette } = useTheme();
   const [navSolid, setNavSolid] = React.useState(false);
+  let routeNavigate = useNavigate();
   const navSolidChange = () => {
     if (window.scrollY >= 95) {
       if (!navSolid) setNavSolid(true);
@@ -119,7 +129,12 @@ const Navbar = () => {
             </FlexBetween>
           </Button>
 
-          <Button variant="contained">Book Appointment</Button>
+          <Button
+            variant="contained"
+            onClick={() => routeNavigate("/appointment")}
+          >
+            Book Appointment
+          </Button>
         </FlexBetween>
       </FlexBetween>
 

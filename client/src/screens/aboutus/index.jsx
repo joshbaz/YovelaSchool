@@ -14,6 +14,7 @@ import coreValue1 from "../../assets/coreValue1.png";
 import coreValue2 from "../../assets/coreValue2.png";
 import coreValue3 from "../../assets/coreValue3.png";
 import coreValue4 from "../../assets/coreValue4.png";
+import PageNavLocation from "../../components/PageNavLocation";
 
 const CoreValueContent = [
   {
@@ -72,43 +73,11 @@ const AboutUs = () => {
       </CustomStack>
 
       {/** nav pager */}
-      <CustomStack
-        padding={"7px 77px"}
-        flexDirection="row"
-        gap="10px"
-        bgcolor={palette.whites[100]}
-        alignItems={"center"}
-      >
-        <Typography
-          variant="body1"
-          color={palette.secondary[500]}
-          sx={{
-            textTransform: "uppercase",
-            textAlign: "center",
-            lineHeight: "26px",
-            padding: "",
-          }}
-        >
-          Home
-        </Typography>
-        <Box width="30px" height="20px">
-          <Icon icon="bi:arrow-right-short" />
-        </Box>
-
-        <Typography
-          variant="body1"
-          color={palette.tertiary[200]}
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            fontSize: "13px",
-            textAlign: "center",
-            lineHeight: "26px",
-          }}
-        >
-          Our school: About us
-        </Typography>
-      </CustomStack>
+      
+      <PageNavLocation
+        currlocation={" Our school: About us"}
+        prevlocation={"Home"}
+      />
 
       {/** About content */}
       <CustomStack

@@ -9,6 +9,10 @@ import AboutUs from "./screens/aboutus";
 import AboutAce from "./screens/aboutace";
 import AdmissionProcess from "./screens/admissionprocess";
 import Clubs from "./screens/clubs";
+import ContactUs from "./screens/contactus";
+import Appointment from "./screens/appointment";
+import StatmentOfFaith from "./screens/statementoffaith";
+import BoardOfGovernors from "./screens/boardofgovernors";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
   return (
@@ -20,13 +24,21 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/ourschool/aboutus" element={<AboutUs />} />
 
-            <Route path="/ourschool/statementoffaith" element={<Home />} />
+            <Route
+              path="/ourschool/statementoffaith"
+              element={<StatmentOfFaith />}
+            />
+            <Route
+              path="/ourschool/boardofgovernors"
+              element={<BoardOfGovernors />}
+            />
+            <Route path="/ourschool/careers" element={<BoardOfGovernors />} />
             <Route path="/acdemics/ace" element={<AboutAce />} />
             <Route path="/admissions/process" element={<AdmissionProcess />} />
             <Route path="/schoollife/conventions" element={<Home />} />
             <Route path="/schoollife/extracurricular" element={<Clubs />} />
-            <Route path="/contactus" element={<Home />} />
-            <Route path="/appointment" element={<Home />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/appointment" element={<Appointment />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

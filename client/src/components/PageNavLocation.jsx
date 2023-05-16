@@ -25,7 +25,7 @@ const PageNavLocation = ({ currlocation, prevlocation }) => {
         {prevlocation}
       </Typography>
       <Box width="30px" height="20px">
-        <Icon icon="bi:arrow-right-short" />
+        <Icon icon="bi:arrow-right-short" width="30px" height="20px" />
       </Box>
 
       <Typography
