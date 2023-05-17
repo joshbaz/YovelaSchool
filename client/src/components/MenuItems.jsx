@@ -3,7 +3,7 @@ import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Dropdown from "./Dropdown";
 import { styled } from "@mui/system";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const MenuItemWrap = styled("li")(({ theme }) => ({
   textDecoration: "none",
@@ -14,9 +14,9 @@ const MenuItemWrap = styled("li")(({ theme }) => ({
 const MenuItems = ({ items, navsolid }) => {
   const { palette } = useTheme();
   const [dropdown, setDropDown] = React.useState(false);
-
+  let location = useLocation();
   let ref = React.useRef();
-
+  console.log("location", location);
   React.useEffect(() => {
     const handler = (event) => {
       if (dropdown && ref.current && !ref.current.contains(event.target)) {
@@ -38,19 +38,25 @@ const MenuItems = ({ items, navsolid }) => {
   const onMouseLeave = () => {
     window.innerWidth > 960 && setDropDown(false);
   };
+
+  const onMouseClick = () => {
+    setDropDown(true);
+  }
   return (
     <MenuItemWrap
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onMouseClick}
     >
       {items.subData ? (
         <>
           <NavLink
-            to={items.url}
             role="button"
             className={({ isActive }) =>
-              isActive ? "activeItem mainNavItem" : "mainNavItem"
+              isActive && location.pathname.includes(items.url)
+                ? "activeItem mainNavItem"
+                : "mainNavItem"
             }
           >
             <Button
