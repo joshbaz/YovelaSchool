@@ -80,7 +80,7 @@ const Navbar = () => {
   const [navSolid, setNavSolid] = React.useState(false);
   let routeNavigate = useNavigate();
   const navSolidChange = () => {
-    if (window.scrollY >= 95) {
+    if (window.scrollY >= 120) {
       if (!navSolid) setNavSolid(true);
     } else {
       setNavSolid(false);
@@ -102,6 +102,7 @@ const Navbar = () => {
         {/** logo */}
         <Avatar
           alt="Yovela School Logo"
+          onClick={() => routeNavigate("/")}
           src={Logos}
           sx={{
             height: [50, 100, 120],
@@ -165,18 +166,58 @@ const Navbar = () => {
             },
           }}
         >
-          <nav>
+          <nav
+            style={{
+              width: "100%",
+            }}
+          >
             <ul>
               <FlexBetween
-                gap="0.6rem"
                 fontSize={"1.2rem"}
                 color={palette.tertiary[500]}
+                justifyContent={
+                  navSolid ? "space-between" : "center !important"
+                }
+                sx={{
+                  height: [50, 50, 50],
+                }}
+                p="0rem 2rem"
+                width="100%"
               >
-                {menuData.map((data, index) => {
-                  return (
-                    <MenuItems navsolid={navSolid} items={data} key={index} />
-                  );
-                })}
+                {/** logo */}
+                {navSolid && (
+                  <Avatar
+                    alt="Yovela School Logo"
+                    onClick={() => routeNavigate("/")}
+                    src={Logos}
+                    sx={{
+                      height: [50, 80, 80],
+                      width: [50, 80, 80],
+                      marginBottom: "0.3rem",
+                    }}
+                  />
+                )}
+
+                <FlexBetween
+                  gap="0.6rem"
+                  fontSize={"1.2rem"}
+                  color={palette.tertiary[500]}
+                >
+                  {menuData.map((data, index) => {
+                    return (
+                      <MenuItems navsolid={navSolid} items={data} key={index} />
+                    );
+                  })}
+                </FlexBetween>
+
+                {navSolid && (
+                  <Button
+                    variant="contained"
+                    onClick={() => routeNavigate("/appointment")}
+                  >
+                    Book Appointment
+                  </Button>
+                )}
               </FlexBetween>
             </ul>
           </nav>
