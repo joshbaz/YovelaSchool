@@ -77,7 +77,7 @@ const CareerInfo = () => {
           bgcolor={palette.whites[100]}
           padding={"40px 0"}
           alignItems={"center"}
-          gap="34px"
+          gap="73px"
           width="1105px"
         >
           <CustomStack flexDirection={"column"} width="100%" gap="31px">
