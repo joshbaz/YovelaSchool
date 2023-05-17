@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types";
 import CustomStack from "./CustomStack";
 import { useTheme, Box, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
@@ -80,3 +81,9 @@ const PageNavLocation = ({ currlocation, prevlocation, extendedlocation }) => {
 };
 
 export default PageNavLocation;
+
+PageNavLocation.propTypes = {
+  currlocation: PropTypes.string,
+  prevlocation: PropTypes.string,
+  extendedlocation: PropTypes.string,
+};
