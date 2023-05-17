@@ -1,13 +1,12 @@
 import React from "react";
 import { styled } from "@mui/system";
-import { Box, Stack, useTheme, Typography, Divider } from "@mui/material";
+import { Box, Stack, useTheme, Typography } from "@mui/material";
 import PageHeader from "../../components/PageHeader";
 import Footer from "../../components/Footer";
 import { Icon } from "@iconify/react";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
 
-import clubsbg from "../../assets/clubs.png";
 import PageNavLocation from "../../components/PageNavLocation";
 import boardsbg from "../../assets/boardgovenors.png";
 import InterconnectedIcon from "../../assets/InterconnectedIcon.png";

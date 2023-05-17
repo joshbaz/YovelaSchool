@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import CustomStack from "./CustomStack";
 import { useTheme, Box, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
-const PageNavLocation = ({ currlocation, prevlocation }) => {
+const PageNavLocation = ({ currlocation, prevlocation, extendedlocation }) => {
   const { palette } = useTheme();
   return (
     <CustomStack
@@ -24,13 +24,16 @@ const PageNavLocation = ({ currlocation, prevlocation }) => {
       >
         {prevlocation}
       </Typography>
+
       <Box width="30px" height="20px">
         <Icon icon="bi:arrow-right-short" width="30px" height="20px" />
       </Box>
 
       <Typography
         variant="body1"
-        color={palette.tertiary[200]}
+        color={
+          extendedlocation ? palette.secondary[500] : palette.tertiary[200]
+        }
         sx={{
           textTransform: "uppercase",
           fontWeight: "600",
@@ -41,8 +44,30 @@ const PageNavLocation = ({ currlocation, prevlocation }) => {
       >
         {currlocation}
       </Typography>
+
+      {extendedlocation && (
+        <>
+          <Box width="30px" height="20px">
+            <Icon icon="bi:arrow-right-short" width="30px" height="20px" />
+          </Box>
+
+          <Typography
+            variant="body1"
+            color={palette.tertiary[200]}
+            sx={{
+              textTransform: "uppercase",
+              fontWeight: "600",
+              fontSize: "13px",
+              textAlign: "center",
+              lineHeight: "26px",
+            }}
+          >
+            {extendedlocation}
+          </Typography>
+        </>
+      )}
     </CustomStack>
   );
 };
 
-export default PageNavLocation
+export default PageNavLocation;

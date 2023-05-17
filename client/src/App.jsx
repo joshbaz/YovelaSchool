@@ -13,6 +13,8 @@ import ContactUs from "./screens/contactus";
 import Appointment from "./screens/appointment";
 import StatmentOfFaith from "./screens/statementoffaith";
 import BoardOfGovernors from "./screens/boardofgovernors";
+import Careers from "./screens/careers";
+import CareerInfo from "./screens/careers/CareerInfo";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
   return (
@@ -32,7 +34,8 @@ function App() {
               path="/ourschool/boardofgovernors"
               element={<BoardOfGovernors />}
             />
-            <Route path="/ourschool/careers" element={<BoardOfGovernors />} />
+            <Route path="/ourschool/careers" element={<Careers />} />
+            <Route path="/ourschool/careers/info" element={<CareerInfo />} />
             <Route path="/acdemics/ace" element={<AboutAce />} />
             <Route path="/admissions/process" element={<AdmissionProcess />} />
             <Route path="/schoollife/conventions" element={<Home />} />
