@@ -1,4 +1,3 @@
-import React from "react";
 import CustomStack from "./CustomStack";
 import { useTheme, Box, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
@@ -25,8 +24,13 @@ const PageNavLocation = ({ currlocation, prevlocation, extendedlocation }) => {
         {prevlocation}
       </Typography>
 
-      <Box width="30px" height="20px">
-        <Icon icon="bi:arrow-right-short" width="30px" height="20px" />
+      <Box
+        height="100%"
+        display="flex"
+        alignItems={"center"}
+        color={palette.tertiary[200]}
+      >
+        <Icon icon="bi:arrow-right-short" width="24" height="24" />
       </Box>
 
       <Typography
@@ -47,8 +51,13 @@ const PageNavLocation = ({ currlocation, prevlocation, extendedlocation }) => {
 
       {extendedlocation && (
         <>
-          <Box width="30px" height="20px">
-            <Icon icon="bi:arrow-right-short" width="30px" height="20px" />
+          <Box
+            height="100%"
+            display="flex"
+            alignItems={"center"}
+            color={palette.tertiary[200]}
+          >
+            <Icon icon="bi:arrow-right-short" width="24" height="24" />
           </Box>
 
           <Typography
