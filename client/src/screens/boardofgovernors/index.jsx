@@ -12,11 +12,15 @@ import boardsbg from "../../assets/boardgovenors.png";
 import InterconnectedIcon from "../../assets/InterconnectedIcon.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { register } from "swiper/element/bundle";
+register();
 
 import "swiper/css";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
+import { Navigation } from "swiper";
 
 import BoardMember1 from "../../assets/Governor1.png";
 import BoardMember2 from "../../assets/Governor2.png";
@@ -65,6 +69,11 @@ const AdminList = [
     images: AdminMember3,
     Name: "Dr. Oboyo Oludhe",
   },
+  {
+    title: "Secretary",
+    images: AdminMember3,
+    Name: "Dr. Oboyo Oludhe",
+  },
 ];
 
 const Container = styled(Stack)(({ theme }) => ({
@@ -81,11 +90,25 @@ const Container = styled(Stack)(({ theme }) => ({
     backgroundColor: theme.palette.whites[100],
     position: "relative",
   },
+  ".swiper-button-next, .swiper-button-prev ": {
+    color: theme.palette.secondary[500],
+
+    borderRadius: "3px",
+    width: "44px",
+    height: "44px",
+  },
+  ".swiper-button-disabled": {
+    backgroundColor: "transparent !important",
+  },
 }));
 const BoardOfGovernors = () => {
   const { palette } = useTheme();
-  const navigationPrevRef = React.useRef(null);
-  const navigationNextRef = React.useRef(null);
+  const navigationPrevRef1 = React.useRef(null);
+  const navigationNextRef1 = React.useRef(null);
+  const swiperElRef = React.useRef(null);
+
+  const navigationPrevRef2 = React.useRef(null);
+  const navigationNextRef2 = React.useRef(null);
   return (
     <Container gap={"0px"}>
       <CustomStack flexDirection={"column"} height="100% ">
@@ -165,10 +188,20 @@ const BoardOfGovernors = () => {
         <CustomStack flexDirection={"column"} position="relative" width="100%">
           <CustomStack padding={"0px 28px"} width="100%">
             <Swiper
-              scrollbar={{ hide: true }}
+              init="false"
+              ref={swiperElRef}
               slidesPerView={3}
               spaceBetween={20}
               className="mySwiper swiper2"
+              modules={[Navigation]}
+              navigation={{
+                prevEl: navigationPrevRef1.current,
+                nextEl: navigationNextRef1.current,
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = navigationPrevRef1.current;
+                swiper.params.navigation.nextEl = navigationNextRef1.current;
+              }}
             >
               {BoardList.map((data, index) => {
                 return (
@@ -220,35 +253,38 @@ const BoardOfGovernors = () => {
             </Swiper>
           </CustomStack>
 
+          {/** navs */}
           <Box
-            height="50px"
-            width="50px"
-            className="..swiper-button-prev"
-            ref={navigationPrevRef}
+            className="swiper-button-prev"
+            ref={navigationPrevRef1}
             zIndex={"10"}
             sx={{
               position: "absolute",
-              top: "38%",
-              left: "-1rem",
-              color: palette.secondary[700],
+              top: "45%",
+              left: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <Icon icon="bi:arrow-left-short" width="50px" height="50px" />
+            <Icon icon="bi:arrow-left-short" width="40" height="40" />
           </Box>
+
           <Box
-            height="50px"
-            width="50px"
-            className="..swiper-button-next"
-            ref={navigationNextRef}
+            className="swiper-button-next"
+            ref={navigationNextRef1}
             zIndex={"10"}
             sx={{
               position: "absolute",
-              top: "38%",
-              color: palette.secondary[700],
-              right: "-1rem",
+              top: "45%",
+              color: palette.primary[500],
+              right: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <Icon icon="bi:arrow-right-short" width="50px" height="60px" />
+            <Icon icon="bi:arrow-right-short" width="40" height="40" />
           </Box>
         </CustomStack>
       </CustomStack>
@@ -274,10 +310,19 @@ const BoardOfGovernors = () => {
         <CustomStack flexDirection={"column"} position="relative" width="100%">
           <CustomStack padding={"0px 28px"} width="100%">
             <Swiper
-              scrollbar={{ hide: true }}
+              init="false"
               slidesPerView={3}
               spaceBetween={20}
               className="mySwiper swiper2"
+              modules={[Navigation]}
+              navigation={{
+                prevEl: navigationPrevRef2.current,
+                nextEl: navigationNextRef2.current,
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = navigationPrevRef2.current;
+                swiper.params.navigation.nextEl = navigationNextRef2.current;
+              }}
             >
               {AdminList.map((data, index) => {
                 return (
@@ -329,35 +374,38 @@ const BoardOfGovernors = () => {
             </Swiper>
           </CustomStack>
 
+          {/** navs */}
           <Box
-            height="50px"
-            width="50px"
-            className="..swiper-button-prev"
-            ref={navigationPrevRef}
+            className="swiper-button-prev"
+            ref={navigationPrevRef2}
             zIndex={"10"}
             sx={{
               position: "absolute",
-              top: "38%",
-              left: "-1rem",
-              color: palette.secondary[700],
+              top: "45%",
+              left: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <Icon icon="bi:arrow-left-short" width="50px" height="50px" />
+            <Icon icon="bi:arrow-left-short" width="40" height="40" />
           </Box>
+
           <Box
-            height="50px"
-            width="50px"
-            className="..swiper-button-next"
-            ref={navigationNextRef}
+            className="swiper-button-next"
+            ref={navigationNextRef2}
             zIndex={"10"}
             sx={{
               position: "absolute",
-              top: "38%",
-              color: palette.secondary[50],
-              right: "-1rem",
+              top: "45%",
+              color: palette.primary[500],
+              right: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <Icon icon="bi:arrow-right-short" width="50px" height="60px" />
+            <Icon icon="bi:arrow-right-short" width="40" height="40" />
           </Box>
         </CustomStack>
       </CustomStack>

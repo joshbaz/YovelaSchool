@@ -1,22 +1,21 @@
 import CustomStack from "./CustomStack";
 import { useTheme, Box, Typography, Avatar } from "@mui/material";
 import FooterLogo from "../assets/YovelaFooterLogo.svg";
-import ButtonFacebook from "../assets/ButtonFacebook.svg";
-import Buttonlinkedin from "../assets/Buttonlinkedin.svg";
-import ButtonTwitter from "../assets/ButtonTwitter.svg";
+
+import { Icon } from "@iconify/react";
 
 const FooterLinks = [
   {
     title: "Facebook",
-    icon: ButtonFacebook,
+    icon: <Icon icon="gg:facebook" height="25" width="25" />,
   },
   {
     title: "Twitter",
-    icon: ButtonTwitter,
+    icon: <Icon icon="fe:twitter" height="26" width="26" />,
   },
   {
     title: "LinkedIn",
-    icon: Buttonlinkedin,
+    icon: <Icon icon="akar-icons:linkedin-v2-fill" height="23" width="23" />,
   },
 ];
 
@@ -85,14 +84,18 @@ const Footer = () => {
               return (
                 <Box
                   key={index}
-                  color={"red"}
-                  sx={{ height: "36px", width: "36px", borderRadius: "50%" }}
+                  color={palette.tertiary[600]}
+                  sx={{
+                    height: "36px",
+                    width: "36px",
+                    borderRadius: "50%",
+                    backgroundColor: palette.primary[50],
+                    alignItems: "center",
+                    justifyContent: "center",
+                    display: "flex",
+                  }}
                 >
-                  <Avatar
-                    src={data.icon}
-                    alt={data.title}
-                    sx={{ height: "36px", width: "36px", borderRadius: "50%" }}
-                  />
+                  {data.icon}
                 </Box>
               );
             })}

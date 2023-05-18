@@ -19,7 +19,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Scrollbar, Navigation, Pagination } from "swiper";
+import { Navigation } from "swiper";
 
 import activityministry from "../../assets/ActivityMinistry.png";
 import activitysport from "../../assets/ActivitySport.png";
@@ -43,6 +43,10 @@ const ActivityList = [
   {
     title: "Sports",
     images: activitysport,
+  },
+  {
+    title: "Music",
+    images: activitymusic,
   },
   {
     title: "Music",
@@ -96,6 +100,16 @@ const Container = styled(Stack)(({ theme }) => ({
   },
   ".swiper2": {
     backgroundColor: theme.palette.tertiary[600],
+  },
+  ".swiper-button-next, .swiper-button-prev ": {
+    color: theme.palette.primary[50],
+    backgroundColor: "rgba(205, 238, 228, 0.3)",
+    borderRadius: "3px",
+    width: "44px",
+    height: "44px",
+  },
+  ".swiper-button-disabled": {
+    backgroundColor: "transparent !important",
   },
 }));
 const Clubs = () => {
@@ -202,65 +216,93 @@ const Clubs = () => {
           </Typography>
         </CustomStack>
 
-        <CustomStack overflow={"hidden"} width="100%">
-          <Swiper
-            scrollbar={{ hide: true }}
-            slidesPerView={3}
-            spaceBetween={20}
-            className="mySwiper swiper2"
-          >
-            {ActivityList.map((data, index) => {
-              return (
-                <SwiperSlide key={index} className="swiper2">
-                  <CustomStack
-                    bgcolor={palette.tertiary[600]}
-                    flexDirection={"column"}
-                    alignItems={"center"}
-                    gap="20px"
-                    overflow={"hidden"}
-                  >
-                    <Box
-                      sx={{
-                        height: "438px",
-                        width: "404.11px",
-                        position: "relative",
-                      }}
+        <CustomStack flexDirection={"column"} position="relative" width="100%">
+          <CustomStack overflow={"hidden"} padding={"0px 28px"} width="100%">
+            <Swiper
+              init="false"
+              slidesPerView={3}
+              spaceBetween={20}
+              className="mySwiper swiper2"
+              modules={[Navigation]}
+              navigation={{
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+              }}
+            >
+              {ActivityList.map((data, index) => {
+                return (
+                  <SwiperSlide key={index} className="swiper2">
+                    <CustomStack
+                      bgcolor={palette.tertiary[600]}
+                      flexDirection={"column"}
+                      alignItems={"center"}
+                      gap="20px"
+                      overflow={"hidden"}
                     >
-                      <img src={data.images} alt="hero" />
-                    </Box>
-                    <Typography
-                      variant="body1"
-                      color={palette.whites[100]}
-                      sx={{
-                        fontSize: "27px",
-                        fontWeight: "200",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {data.title}
-                    </Typography>
-                  </CustomStack>
-                </SwiperSlide>
-              );
-            })}
+                      <Box
+                        sx={{
+                          height: "438px",
+                          width: "404.11px",
+                          position: "relative",
+                        }}
+                      >
+                        <img src={data.images} alt="hero" />
+                      </Box>
+                      <Typography
+                        variant="body1"
+                        color={palette.whites[100]}
+                        sx={{
+                          fontSize: "27px",
+                          fontWeight: "200",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {data.title}
+                      </Typography>
+                    </CustomStack>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </CustomStack>
 
-            <Box
-              height="50px"
-              width="50px"
-              className="..swiper-button-prev"
-              ref={navigationPrevRef}
-            >
-              <Icon icon="bi:arrow-left-short" width="50px" height="50px" />
-            </Box>
-            <Box
-              height="50px"
-              width="50px"
-              className="..swiper-button-next"
-              ref={navigationNextRef}
-            >
-              <Icon icon="bi:arrow-right-short" width="60px" height="60px" />
-            </Box>
-          </Swiper>
+          {/** navs */}
+          <Box
+            className="swiper-button-prev"
+            ref={navigationPrevRef}
+            zIndex={"10"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Icon icon="bi:arrow-left-short" width="40" height="40" />
+          </Box>
+
+          <Box
+            className="swiper-button-next"
+            ref={navigationNextRef}
+            zIndex={"10"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              color: palette.primary[500],
+              right: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Icon icon="bi:arrow-right-short" width="40" height="40" />
+          </Box>
         </CustomStack>
       </CustomStack>
 

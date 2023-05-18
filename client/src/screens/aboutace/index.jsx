@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Stack, useTheme, Typography, Divider } from "@mui/material";
+import { Stack, useTheme, Typography, Divider, Box } from "@mui/material";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
 import PageHeader from "../../components/PageHeader";
@@ -16,6 +16,23 @@ const Container = styled(Stack)(({ theme }) => ({
 
   ".openSpanText": {
     fontWeight: "400",
+  },
+
+  ".acevideo": {
+    width: "100%",
+    height: "80vh",
+    display: "relative",
+  },
+
+  ".iframe": {
+    overflow: "hidden",
+    border: 0,
+    alignSelf: "center",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
   },
 }));
 const AboutAce = () => {
@@ -34,6 +51,28 @@ const AboutAce = () => {
       />
 
       {/** ace video */}
+      <CustomStack
+        flexDirection="column"
+        height="80vh"
+        width="100%"
+        bgcolor={palette.tertiary[600]}
+        position={"relative"}
+      >
+        <Box className="acevideo">
+          <iframe
+            style={{
+              width: "100%",
+              height: "100% !important",
+              display: "block",
+            }}
+            className="iframe"
+            src="https://www.youtube.com/embed/ob9ZnM-Fgbs"
+            title="Presenting A.C.E."
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </Box>
+      </CustomStack>
 
       {/** what ace is */}
       <CustomStack

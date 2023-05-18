@@ -9,9 +9,13 @@ import {
   Avatar,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { register } from "swiper/element/bundle";
+register();
 
 import "swiper/css";
 import "swiper/css/scrollbar";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import { Scrollbar, Navigation, Pagination } from "swiper";
 import heroimg from "../../assets/hero.png";
@@ -33,6 +37,7 @@ import PrincipalPhoto from "../../assets/Principal.png";
 import exPhoto1 from "../../assets/exPhoto1.png";
 import exPhoto2 from "../../assets/exPhoto2.png";
 import Footer from "../../components/Footer";
+import { Icon } from "@iconify/react";
 const cirriculumContent = [
   {
     title: "Ace curriculum school",
@@ -82,6 +87,10 @@ const exPhotosData = [
     image: exPhoto2,
     title: "exphoto2",
   },
+  {
+    image: exPhoto2,
+    title: "exphoto2",
+  },
 ];
 const Container = styled(Stack)(({ theme }) => ({
   textDecoration: "none",
@@ -92,6 +101,31 @@ const Container = styled(Stack)(({ theme }) => ({
 
   ".openSpanText": {
     fontWeight: "400",
+  },
+  ".swiper-button-next, .swiper-button-prev ": {
+    color: theme.palette.primary[50],
+    backgroundColor: "rgba(205, 238, 228, 0.3)",
+    borderRadius: "3px",
+    width: "44px",
+    height: "44px",
+  },
+  ".swiper-button-disabled": {
+    backgroundColor: "transparent !important",
+  },
+  ".swiper-pagination-bullet": {
+    width: "12px",
+    height: "12px",
+    textAlign: "center",
+
+    borderRadius: "3px",
+
+    color: "#000",
+    opacity: 1,
+    background: "rgba(0, 0, 0, 0.2)",
+    border: `2px solid ${theme.palette.primary[50]}`,
+  },
+  ".swiper-pagination-bullet-active": {
+    background: theme.palette.primary[50],
   },
 }));
 
@@ -105,6 +139,11 @@ const ImageContainer = styled(Box)({
 });
 const Home = () => {
   const { palette } = useTheme();
+  const navigationPrevRef = React.useRef(null);
+  const navigationNextRef = React.useRef(null);
+  const swiperElRef = React.useRef(null);
+  const paginationRef = React.useRef(null);
+
   return (
     <Container spacing={0}>
       {/** hero & nav */}
@@ -343,50 +382,166 @@ const Home = () => {
         }}
         bgcolor={palette.tertiary[500]}
       >
-        <Swiper
-          scrollbar={{ hide: true }}
-          modules={[Navigation, Pagination, Scrollbar]}
-          navigation
-          pagination={{ clickable: true }}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <CustomStack
-              bgcolor={palette.tertiary[500]}
-              width="100%"
-              flexDirection={"row"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              gap="20px"
+        <CustomStack flexDirection={"column"} position="relative" width="100%">
+          <CustomStack padding={"0px 28px"} width="100%">
+            <Swiper
+              init="false"
+              ref={swiperElRef}
+              modules={[Navigation, Pagination]}
+              navigation={{
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
+              }}
+              pagination={{
+                clickable: true,
+                el: paginationRef.current,
+                renderBullet: function (index, className) {
+                  return '<span class="' + className + '">' + "</span>";
+                },
+              }}
+              className="mySwiper"
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+                swiper.params.pagination.el = paginationRef.current;
+              }}
             >
-              <Box
-                sx={{ height: "360px", width: "540px", position: "relative" }}
-              >
-                <img src={earlyYears} alt="hero" />
-              </Box>
-              <CustomStack flexDirection={"column"} gap="30px" width={"530px"}>
-                <Typography
-                  variant="h1"
-                  color={palette.primary[50]}
-                  sx={{ fontWeight: "300", fontSize: "30px" }}
+              <SwiperSlide>
+                <CustomStack
+                  bgcolor={palette.tertiary[500]}
+                  width="100%"
+                  flexDirection={"row"}
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                  gap="20px"
                 >
-                  Early Years
-                </Typography>
+                  <Box
+                    sx={{
+                      height: "360px",
+                      width: "540px",
+                      position: "relative",
+                    }}
+                  >
+                    <img src={earlyYears} alt="hero" />
+                  </Box>
+                  <CustomStack
+                    flexDirection={"column"}
+                    gap="30px"
+                    width={"530px"}
+                  >
+                    <Typography
+                      variant="h1"
+                      color={palette.primary[50]}
+                      sx={{ fontWeight: "300", fontSize: "30px" }}
+                    >
+                      Early Years
+                    </Typography>
 
-                <Typography
-                  variant="body1"
-                  color={palette.whites[500]}
-                  sx={{ fontSize: "17px", textAlign: "center" }}
+                    <Typography
+                      variant="body1"
+                      color={palette.whites[500]}
+                      sx={{ fontSize: "17px", textAlign: "center" }}
+                    >
+                      Lorem ipsum dolor sit amet consectetur. Et mi urna libero
+                      vestibulum eleifend elementum ac suscipit neque.
+                      Pellentesque consectetur sed ut faucibus posuere ut
+                      praesent blandit tempor.
+                    </Typography>
+                  </CustomStack>
+                </CustomStack>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <CustomStack
+                  bgcolor={palette.tertiary[500]}
+                  width="100%"
+                  flexDirection={"row"}
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                  gap="20px"
                 >
-                  Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                  vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                  consectetur sed ut faucibus posuere ut praesent blandit
-                  tempor.
-                </Typography>
-              </CustomStack>
-            </CustomStack>
-          </SwiperSlide>
-        </Swiper>
+                  <Box
+                    sx={{
+                      height: "360px",
+                      width: "540px",
+                      position: "relative",
+                    }}
+                  >
+                    <img src={earlyYears} alt="hero" />
+                  </Box>
+                  <CustomStack
+                    flexDirection={"column"}
+                    gap="30px"
+                    width={"530px"}
+                  >
+                    <Typography
+                      variant="h1"
+                      color={palette.primary[50]}
+                      sx={{ fontWeight: "300", fontSize: "30px" }}
+                    >
+                      Early Years
+                    </Typography>
+
+                    <Typography
+                      variant="body1"
+                      color={palette.whites[500]}
+                      sx={{ fontSize: "17px", textAlign: "center" }}
+                    >
+                      Lorem ipsum dolor sit amet consectetur. Et mi urna libero
+                      vestibulum eleifend elementum ac suscipit neque.
+                      Pellentesque consectetur sed ut faucibus posuere ut
+                      praesent blandit tempor.
+                    </Typography>
+                  </CustomStack>
+                </CustomStack>
+              </SwiperSlide>
+            </Swiper>
+          </CustomStack>
+
+          {/** navs */}
+          <Box
+            className="swiper-button-prev"
+            ref={navigationPrevRef}
+            zIndex={"10"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Icon icon="bi:arrow-left-short" width="40" height="40" />
+          </Box>
+
+          <Box
+            className="swiper-button-next"
+            ref={navigationNextRef}
+            zIndex={"10"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              color: palette.primary[500],
+              right: "-1.5rem",
+
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Icon icon="bi:arrow-right-short" width="40" height="40" />
+          </Box>
+
+          {/** swiper pagination */}
+          <Box
+            className="swiper-pagination"
+            ref={paginationRef}
+            sx={{
+              bottom: "-30px !important",
+              width: "100%",
+            }}
+          ></Box>
+        </CustomStack>
       </Box>
 
       {/** Accreditations */}
@@ -480,10 +635,15 @@ const Home = () => {
 
       <Box bgcolor={palette.tertiary[500]} height="350px">
         <Swiper
-          scrollbar={{ hide: true }}
-          modules={[Navigation, Pagination, Scrollbar]}
+          modules={[Navigation, Pagination]}
           navigation
-          pagination={{ clickable: true }}
+          pagination={{
+            clickable: true,
+
+            renderBullet: function (index, className) {
+              return '<span class="' + className + '">' + "</span>";
+            },
+          }}
           slidesPerView={2}
           className="mySwiper"
         >
