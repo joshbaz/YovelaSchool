@@ -170,7 +170,7 @@ const Home = () => {
             </Swiper>
           </Box>
 
-          <Box height="14%" display="flex" justifyContent="center">
+          <Box height="100%" display="flex" justifyContent="center">
             <FlexBetween width="50%" bgcolor={palette.primary[500]}>
               <Box>
                 <Typography variant="h2" color={palette.whites[500]}>
