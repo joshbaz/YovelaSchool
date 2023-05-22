@@ -399,7 +399,7 @@ const Home = () => {
               }}
               pagination={{
                 clickable: true,
-                el: paginationRef1.current,
+
                 renderBullet: function (index, className) {
                   return '<span class="' + className + '">' + "</span>";
                 },
@@ -408,7 +408,6 @@ const Home = () => {
               onBeforeInit={(swiper) => {
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
-                swiper.params.pagination.el = paginationRef1.current;
               }}
             >
               <SwiperSlide>
@@ -538,14 +537,6 @@ const Home = () => {
           </Box>
 
           {/** swiper pagination */}
-          <Box
-            className="swiper-pagination"
-            ref={paginationRef1}
-            sx={{
-              bottom: "-30px !important",
-              width: "100%",
-            }}
-          ></Box>
         </CustomStack>
       </Box>
 
