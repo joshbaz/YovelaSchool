@@ -393,10 +393,6 @@ const Home = () => {
               init="false"
               ref={swiperElRef}
               modules={[Navigation, Pagination]}
-              navigation={{
-                prevEl: navigationPrevRef.current,
-                nextEl: navigationNextRef.current,
-              }}
               pagination={{
                 clickable: true,
 
@@ -410,19 +406,6 @@ const Home = () => {
                 swiper.params.navigation.nextEl = navigationNextRef.current;
                 swiper.navigation.init();
                 swiper.navigation.update();
-              }}
-              onSwiper={(swiper) => {
-                // Delay execution for the refs to be defined
-                setTimeout(() => {
-                  // Override prevEl & nextEl now that refs are defined
-                  swiper.params.navigation.prevEl = navigationPrevRef.current;
-                  swiper.params.navigation.nextEl = navigationNextRef.current;
-
-                  // Re-init navigation
-                  swiper.navigation.destroy();
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                });
               }}
             >
               <SwiperSlide>
