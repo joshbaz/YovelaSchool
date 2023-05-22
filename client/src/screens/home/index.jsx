@@ -158,7 +158,7 @@ const Home = () => {
           height="100vh"
         >
           {/** hero */}
-          <Box height="86%">
+          <Box height="80%">
             <Swiper
               scrollbar={{ hide: true }}
               modules={[Scrollbar]}
@@ -171,41 +171,33 @@ const Home = () => {
           </Box>
 
           <CustomStack
-            height="24%"
+            height={"100%"}
             display="flex"
-            alignItems="center"
             justifyContent="center"
+            bgcolor={palette.primary[100]}
+            overflow={"hidden"}
           >
             <FlexBetween width="50%" bgcolor={palette.primary[100]}>
-              <Box>
-                <Typography
-                  variant="h2"
-                  color={palette.whites[500]}
-                  sx={{ fontSize: "20px" }}
-                >
-                  Enrollment is{" "}
-                  <em>
-                    <span className="openSpanText">open</span>
-                  </em>
-                </Typography>
-              </Box>
+              <Typography
+                variant="h2"
+                color={palette.whites[500]}
+                sx={{ fontSize: "20px" }}
+              >
+                Enrollment is{" "}
+                <em>
+                  <span className="openSpanText">open</span>
+                </em>
+              </Typography>
 
-              <Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    color: palette.primary[500],
-                    backgroundColor: palette.whites[500],
-
-                    width: "180px",
-
-                    fontSize: "16px !important",
-                    letterSpacing: "1px",
-                  }}
-                >
-                  How to Apply
-                </Button>
-              </Box>
+              <Button
+                variant="contained"
+                sx={{
+                  color: palette.primary[500],
+                  backgroundColor: palette.whites[500],
+                }}
+              >
+                How to Apply
+              </Button>
             </FlexBetween>
           </CustomStack>
         </CustomStack>
