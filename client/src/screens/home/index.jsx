@@ -142,7 +142,8 @@ const Home = () => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
   const swiperElRef = React.useRef(null);
-  const paginationRef = React.useRef(null);
+  const paginationRef1 = React.useRef(null);
+  const paginationRef2 = React.useRef(null);
 
   return (
     <Container spacing={0}>
@@ -194,6 +195,7 @@ const Home = () => {
                 sx={{
                   color: palette.primary[500],
                   backgroundColor: palette.whites[500],
+                  fontSize: "16px",
                 }}
               >
                 How to Apply
@@ -397,7 +399,7 @@ const Home = () => {
               }}
               pagination={{
                 clickable: true,
-                el: paginationRef.current,
+                el: paginationRef1.current,
                 renderBullet: function (index, className) {
                   return '<span class="' + className + '">' + "</span>";
                 },
@@ -406,7 +408,7 @@ const Home = () => {
               onBeforeInit={(swiper) => {
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
-                swiper.params.pagination.el = paginationRef.current;
+                swiper.params.pagination.el = paginationRef1.current;
               }}
             >
               <SwiperSlide>
@@ -538,7 +540,7 @@ const Home = () => {
           {/** swiper pagination */}
           <Box
             className="swiper-pagination"
-            ref={paginationRef}
+            ref={paginationRef1}
             sx={{
               bottom: "-30px !important",
               width: "100%",
