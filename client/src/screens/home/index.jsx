@@ -402,8 +402,8 @@ const Home = () => {
               }}
               className="mySwiper"
               onInit={(swiper) => {
-                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                swiper.params.navigation.nextEl = navigationNextRef.current;
+                swiper.params.navigation.prevEl = ".swiper-button-prev";
+                swiper.params.navigation.nextEl = ".swiper-button-next";
                 swiper.navigation.init();
                 swiper.navigation.update();
               }}
