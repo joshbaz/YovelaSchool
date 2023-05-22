@@ -176,11 +176,7 @@ const Home = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <FlexBetween
-             
-              width="50%"
-              bgcolor={palette.primary[100]}
-            >
+            <FlexBetween width="50%" bgcolor={palette.primary[100]}>
               <Box>
                 <Typography variant="h2" color={palette.whites[500]}>
                   Enrollment is{" "}
@@ -190,20 +186,22 @@ const Home = () => {
                 </Typography>
               </Box>
 
-              <Button
-                variant="contained"
-                sx={{
-                  color: palette.primary[500],
-                  backgroundColor: palette.whites[500],
+              <Box>
+                <Button
+                  variant="contained"
+                  sx={{
+                    color: palette.primary[500],
+                    backgroundColor: palette.whites[500],
 
-                  width: "180px",
+                    width: "180px",
 
-                  fontSize: "16px",
-                  letterSpacing: "1px",
-                }}
-              >
-                How to Apply
-              </Button>
+                    fontSize: "16px",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  How to Apply
+                </Button>
+              </Box>
             </FlexBetween>
           </Box>
         </CustomStack>
