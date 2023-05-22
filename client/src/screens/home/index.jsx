@@ -171,7 +171,7 @@ const Home = () => {
           </Box>
 
           <Box height="100%" display="flex" justifyContent="center">
-            <FlexBetween width="50%" bgcolor={palette.primary[500]}>
+            <FlexBetween p="0px 0" width="50%" bgcolor={palette.primary[500]}>
               <Box>
                 <Typography variant="h2" color={palette.whites[500]}>
                   Enrollment is{" "}
