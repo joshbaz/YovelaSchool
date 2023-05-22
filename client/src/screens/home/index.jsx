@@ -405,9 +405,11 @@ const Home = () => {
                 },
               }}
               className="mySwiper"
-              onBeforeInit={(swiper) => {
+              onInit={(swiper) => {
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }}
             >
               <SwiperSlide>
