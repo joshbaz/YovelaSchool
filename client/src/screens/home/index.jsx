@@ -171,14 +171,18 @@ const Home = () => {
           </Box>
 
           <CustomStack
-            height="14%"
+            height="24%"
             display="flex"
             alignItems="center"
             justifyContent="center"
           >
             <FlexBetween width="50%" bgcolor={palette.primary[100]}>
               <Box>
-                <Typography variant="h2" color={palette.whites[500]}>
+                <Typography
+                  variant="h2"
+                  color={palette.whites[500]}
+                  sx={{ fontSize: "20px" }}
+                >
                   Enrollment is{" "}
                   <em>
                     <span className="openSpanText">open</span>
@@ -195,7 +199,7 @@ const Home = () => {
 
                     width: "180px",
 
-                    fontSize: "16px",
+                    fontSize: "16px !important",
                     letterSpacing: "1px",
                   }}
                 >
