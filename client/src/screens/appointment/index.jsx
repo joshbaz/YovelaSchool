@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Stack, useTheme, Typography, Button, Grid } from "@mui/material";
+import { Stack, useTheme, Typography, Button, Grid } from "@mui/material";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
 
@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import contactus from "../../assets/contactus.png";
 
 import PageNavLocation from "../../components/PageNavLocation";
-import AboutYovela from "../../assets/AboutYovela.png";
+
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -42,8 +42,6 @@ const Container = styled(Stack)(({ theme }) => ({
     outline: "none",
   },
 }));
-
-
 
 const MarketingPlatforms = [
   {
