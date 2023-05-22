@@ -175,10 +175,10 @@ const Home = () => {
             height={"100%"}
             display="flex"
             justifyContent="center"
-            bgcolor={palette.primary[100]}
+            bgcolor={palette.primary[500]}
             overflow={"hidden"}
           >
-            <FlexBetween width="50%" bgcolor={palette.primary[100]}>
+            <FlexBetween width="50%" bgcolor={palette.primary[500]}>
               <Typography
                 variant="h2"
                 color={palette.whites[500]}
