@@ -171,14 +171,13 @@ const Home = () => {
           </Box>
 
           <Box
-            height="100%"
+            height="14%"
             display="flex"
             alignItems="center"
             justifyContent="center"
           >
             <FlexBetween
-              p="0px 0"
-              height="100%"
+             
               width="50%"
               bgcolor={palette.primary[100]}
             >
