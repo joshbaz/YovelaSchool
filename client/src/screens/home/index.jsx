@@ -170,7 +170,12 @@ const Home = () => {
             </Swiper>
           </Box>
 
-          <Box height="100%" display="flex" justifyContent="center">
+          <Box
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
             <FlexBetween
               p="0px 0"
               height="100%"
