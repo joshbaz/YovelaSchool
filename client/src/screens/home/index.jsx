@@ -158,7 +158,7 @@ const Home = () => {
           height="100vh"
         >
           {/** hero */}
-          <Box height="80%">
+          <Box height="70vh">
             <Swiper
               scrollbar={{ hide: true }}
               modules={[Scrollbar]}
