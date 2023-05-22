@@ -170,7 +170,7 @@ const Home = () => {
             </Swiper>
           </Box>
 
-          <Box
+          <CustomStack
             height="14%"
             display="flex"
             alignItems="center"
@@ -203,7 +203,7 @@ const Home = () => {
                 </Button>
               </Box>
             </FlexBetween>
-          </Box>
+          </CustomStack>
         </CustomStack>
       </CustomStack>
 
