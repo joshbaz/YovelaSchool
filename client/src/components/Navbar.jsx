@@ -4,7 +4,7 @@ import Logos from "../assets/YovelaColored.svg";
 import { Icon } from "@iconify/react";
 import { useTheme, Box, Avatar, Typography, Button, IconButton } from "@mui/material";
 import MenuItems from "./MenuItems";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const menuData = [
   {
@@ -33,11 +33,11 @@ const menuData = [
   {
     title: "Academics",
     areaControls: "Academics",
-    url: "/acdemics",
+    url: "/academics",
     subData: [
       {
         title: "ACE CURRICULUM",
-        url: "/acdemics/ace",
+        url: "/academics/ace",
       },
     ],
   },
@@ -79,6 +79,7 @@ const Navbar = () => {
   const [navSolid, setNavSolid] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   let routeNavigate = useNavigate();
+  const location = useLocation();
 
   const navSolidChange = () => {
     if (window.scrollY >= 120) {
@@ -221,7 +222,12 @@ const Navbar = () => {
                 sx={{ display: { xs: "none", md: "flex" } }}
               >
                 {menuData.map((data, index) => (
-                  <MenuItems navsolid={navSolid} items={data} key={index} />
+                  <MenuItems
+                    navsolid={navSolid}
+                    items={data}
+                    key={index}
+                    location={location}
+                  />
                 ))}
               </FlexBetween>
 
@@ -270,7 +276,13 @@ const Navbar = () => {
                   </FlexBetween>
                 </Button>
                 {menuData.map((data, index) => (
-                  <MenuItems navsolid={navSolid} items={data} key={index} isMobile={true} />
+                  <MenuItems
+                    navsolid={navSolid}
+                    items={data}
+                    key={index}
+                    isMobile={true}
+                    location={location}
+                  />
                 ))}
                 <Button
                   variant="contained"

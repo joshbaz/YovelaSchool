@@ -5,11 +5,8 @@ import Navbar from "../../components/Navbar";
 import Aboutbg from "../../assets/Aboutbg.png";
 import PageHeader from "../../components/PageHeader";
 import Footer from "../../components/Footer";
-import { Icon } from "@iconify/react";
-
 import AboutYovela from "../../assets/AboutYovela.png";
 import MissionIcon from "../../assets/OurMissionIcon.png";
-
 import coreValue1 from "../../assets/coreValue1.png";
 import coreValue2 from "../../assets/coreValue2.png";
 import coreValue3 from "../../assets/coreValue3.png";
@@ -20,25 +17,25 @@ const CoreValueContent = [
   {
     title: "Leadership",
     subText:
-      "Lorem ipsum dolor sit amet consectetur. Et mi urna libero vestibulum eleifend elementum ac suscipit neque. Pellentesque consectetur sed ut.",
+      "Developing students to become responsible and influential leaders in their communities and beyond.",
     image: coreValue1,
   },
   {
     title: "Excellence",
     subText:
-      "Lorem ipsum dolor sit amet consectetur. Et mi urna libero vestibulum eleifend elementum ac suscipit neque. Pellentesque consectetur sed ut.",
+      "Pursuing the highest standards in education and personal growth, fostering a culture of continuous improvement.",
     image: coreValue2,
   },
   {
     title: "Character",
     subText:
-      "Lorem ipsum dolor sit amet consectetur. Et mi urna libero vestibulum eleifend elementum ac suscipit neque. Pellentesque consectetur sed ut.",
+      "Building strong moral character based on integrity, respect, and compassion.",
     image: coreValue3,
   },
   {
     title: "Christ-centered",
     subText:
-      "Lorem ipsum dolor sit amet consectetur. Et mi urna libero vestibulum eleifend elementum ac suscipit neque. Pellentesque consectetur sed ut.",
+      "Integrating Christian values into all aspects of education, nurturing spiritual development alongside academic achievement.",
     image: coreValue4,
   },
 ];
@@ -49,40 +46,36 @@ const Container = styled(Stack)(({ theme }) => ({
   borderRadius: "4px",
   height: "100%",
   backgroundColor: theme.palette.primary[500],
-
-  ".openSpanText": {
-    fontWeight: "400",
-  },
 }));
 
 const ImageContainer = styled(Box)({
-  backgroundColor: "red",
   ".img": {
     height: "100%",
     width: "100%",
     objectFit: "cover",
   },
 });
+
 const AboutUs = () => {
   const { palette } = useTheme();
+
   return (
     <Container spacing={0}>
-      <CustomStack flexDirection={"column"} height="100% ">
+      <CustomStack flexDirection={"column"} height="100%">
         <Navbar />
         <PageHeader title={"About Our School"} headerimage={Aboutbg} />
       </CustomStack>
 
       {/** nav pager */}
-      
       <PageNavLocation
-        currlocation={" Our school: About us"}
+        currlocation={"Our school: About us"}
         prevlocation={"Home"}
       />
 
       {/** About content */}
       <CustomStack
         sx={{
-          padding: "33px 77px",
+          padding: { xs: "20px", md: "33px 77px" },
         }}
         bgcolor={palette.whites[100]}
         flexDirection={"column"}
@@ -90,14 +83,18 @@ const AboutUs = () => {
         <CustomStack
           bgcolor={palette.whites[100]}
           alignItems="center"
-          flexDirection={"row"}
-          gap={"60px"}
+          flexDirection={{ xs: "column", md: "row" }}
+          gap={{ xs: "30px", md: "60px" }}
           justifyContent={"center"}
         >
           <Box>
             <ImageContainer
               display={"block"}
-              sx={{ height: "454px", width: "529px", position: "relative" }}
+              sx={{
+                height: { xs: "300px", md: "454px" },
+                width: { xs: "100%", md: "529px" },
+                position: "relative",
+              }}
             >
               <img
                 className="img"
@@ -112,23 +109,18 @@ const AboutUs = () => {
             <Typography
               variant="h1"
               color={palette.secondary[700]}
-              sx={{ fontWeight: "500", fontSize: "30px" }}
+              sx={{ fontWeight: "500", fontSize: { xs: "24px", md: "30px" } }}
             >
-              Yovela International Christian school
+              Yovela International Christian School
             </Typography>
 
-            <CustomStack flexDirection={"column"} gap="0px">
+            <CustomStack flexDirection={"column"} gap="15px">
               <Typography
                 variant="body1"
                 color="initial"
                 sx={{ fontSize: "17px", textAlign: "justify" }}
               >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
+                Yovela International Christian School is dedicated to providing a holistic, Christ-centered education that nurtures the intellectual, spiritual, and social development of each student. We strive to create a nurturing environment where students can discover their God-given potential and excel academically.
               </Typography>
 
               <Typography
@@ -136,12 +128,7 @@ const AboutUs = () => {
                 color="initial"
                 sx={{ fontSize: "17px", textAlign: "justify" }}
               >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
+                Our commitment is to equip students with the knowledge, skills, and character necessary to become responsible global citizens who make a positive impact in the world. We foster a community of lifelong learners who are inspired to serve others and embrace a life of purpose and integrity.
               </Typography>
             </CustomStack>
           </CustomStack>
@@ -151,10 +138,11 @@ const AboutUs = () => {
       {/** Our Mission */}
       <CustomStack
         bgcolor={palette.whites[500]}
-        flexDirection="row"
+        flexDirection={{ xs: "column", md: "row" }}
         gap="67px"
         justifyContent={"center"}
-        padding={"88px 0"}
+        padding={{ xs: "40px 20px", md: "88px 0" }}
+        alignItems={"center"}
       >
         <Box
           bgcolor={palette.secondary[500]}
@@ -174,51 +162,45 @@ const AboutUs = () => {
           <Typography
             variant="h1"
             color={palette.secondary[700]}
-            sx={{ fontWeight: "500", fontSize: "30px" }}
+            sx={{ fontWeight: "500", fontSize: { xs: "24px", md: "30px" } }}
           >
             Our Mission
           </Typography>
 
-          <CustomStack flexDirection={"column"} gap="30px">
+          <CustomStack flexDirection={"column"} gap="15px">
             <Typography
               variant="body1"
               color="initial"
               sx={{ fontSize: "17px", textAlign: "justify" }}
             >
-              Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-              vestibulum eleifend elementum ac suscipit neque. Pellentesque
-              consectetur sed ut faucibus posuere ut praesent blandit tempor.
-              Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-              Malesuada tellus et sit vulputate malesuada viverra felis nunc
-              suspendisse. Dui netus semper integer id vitae consequat massa.
+              To cultivate a community of learners who are passionate about seeking knowledge, growing in faith, and making a difference in the world. We aim to provide an exceptional educational experience that empowers students to achieve academic excellence and develop a heart for service.
             </Typography>
           </CustomStack>
         </CustomStack>
       </CustomStack>
 
       {/** Core Values */}
-
       <CustomStack
         flexDirection={"column"}
         bgcolor={palette.whites[100]}
         alignItems={"center"}
-        padding={"82px 0px"}
+        padding={"82px 20px"}
         gap="30px"
       >
         <Typography
           variant="h1"
           color={palette.secondary[700]}
-          sx={{ fontWeight: "500", fontSize: "30px" }}
+          sx={{ fontWeight: "500", fontSize: { xs: "24px", md: "30px" } }}
         >
           Our Core Values
         </Typography>
 
-        <CustomStack flexDirection="row" gap="25px">
+        <CustomStack flexDirection={{ xs: "column", md: "row" }} gap="25px">
           {CoreValueContent.map((data, index) => {
             return (
               <CustomStack
                 key={index}
-                sx={{ width: "290px", height: "386px" }}
+                sx={{ width: {xs:"100%", md: "290px"}, height: "auto" }}
                 flexDirection={"column"}
                 gap="24px"
               >
@@ -252,9 +234,7 @@ const AboutUs = () => {
                       letterSpacing: "1px",
                     }}
                   >
-                    Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                    vestibulum eleifend elementum ac suscipit neque.
-                    Pellentesque consectetur sed ut.
+                    {data.subText}
                   </Typography>
                 </CustomStack>
               </CustomStack>

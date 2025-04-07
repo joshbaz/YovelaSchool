@@ -1,17 +1,13 @@
 import { styled } from "@mui/system";
-import { Box, Stack, useTheme, Typography, Button, Grid } from "@mui/material";
+import { Box, Stack, useTheme, Typography, Grid } from "@mui/material";
 import CustomStack from "../../components/CustomStack";
 import Navbar from "../../components/Navbar";
-
 import PageHeader from "../../components/PageHeader";
 import Footer from "../../components/Footer";
-import contactus from "../../assets/contactus.png";
-
-import PageNavLocation from "../../components/PageNavLocation";
-import Admissions from "../../assets/admissions.png";
 import Aboutbg from "../../assets/Aboutbg.png";
 import Vinebg from "../../assets/vine.png";
 import Trinitybg from "../../assets/trinity.png";
+import PageNavLocation from "../../components/PageNavLocation";
 
 const Container = styled(Stack)(({ theme }) => ({
   textDecoration: "none",
@@ -19,20 +15,19 @@ const Container = styled(Stack)(({ theme }) => ({
   borderRadius: "4px",
   height: "100%",
   backgroundColor: theme.palette.primary[500],
-
   ".openSpanText": {
     fontWeight: "400",
   },
 }));
 
 const ImageContainer = styled(Box)({
-  backgroundColor: "red",
   ".img": {
     height: "100%",
     width: "100%",
     objectFit: "cover",
   },
 });
+
 const StatmentOfFaith = () => {
   const { palette } = useTheme();
   return (
@@ -48,10 +43,10 @@ const StatmentOfFaith = () => {
         prevlocation={"Home"}
       />
 
-      {/**  Vine  */}
+      {/** Vine  */}
       <CustomStack
         sx={{
-          padding: "33px 77px",
+          padding: { xs: "20px", md: "33px 77px" },
         }}
         bgcolor={palette.whites[100]}
         flexDirection={"column"}
@@ -59,14 +54,18 @@ const StatmentOfFaith = () => {
         <CustomStack
           bgcolor={palette.whites[100]}
           alignItems="center"
-          flexDirection={"row"}
-          gap={"60px"}
+          flexDirection={{ xs: "column", md: "row" }}
+          gap={{ xs: "30px", md: "60px" }}
           justifyContent={"center"}
         >
           <Box>
             <ImageContainer
               display={"block"}
-              sx={{ height: "450px", width: "450px", position: "relative" }}
+              sx={{
+                height: { xs: "300px", md: "450px" },
+                width: { xs: "100%", md: "450px" },
+                position: "relative",
+              }}
             >
               <img
                 className="img"
@@ -83,35 +82,30 @@ const StatmentOfFaith = () => {
               color={palette.secondary[700]}
               sx={{
                 fontWeight: "500",
-                fontSize: "30px",
+                fontSize: { xs: "24px", md: "30px" },
                 textTransform: "capitalize",
               }}
             >
               The Vine and the Branches
             </Typography>
 
-            <CustomStack flexDirection={"column"} gap="0px">
+            <CustomStack flexDirection={"column"} gap="15px">
               <Typography
                 variant="body1"
                 color="initial"
                 sx={{ fontSize: "17px", textAlign: "justify" }}
               >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
+                At Yovela International Christian School, we believe in the intimate connection between Christ, the Vine, and us, the branches (John 15:5). We are committed to fostering a community where students understand their reliance on Christ for spiritual growth and fruitful living. We aim to cultivate an environment that nurtures spiritual development alongside academic excellence, enabling students to bear fruit that glorifies God.
               </Typography>
             </CustomStack>
           </CustomStack>
         </CustomStack>
       </CustomStack>
 
-      {/**  The trinity */}
+      {/** The trinity */}
       <CustomStack
         sx={{
-          padding: "33px 77px",
+          padding: { xs: "20px", md: "33px 77px" },
         }}
         bgcolor={palette.whites[100]}
         flexDirection={"column"}
@@ -119,8 +113,8 @@ const StatmentOfFaith = () => {
         <CustomStack
           bgcolor={palette.whites[100]}
           alignItems="center"
-          flexDirection={"row"}
-          gap={"60px"}
+          flexDirection={{ xs: "column", md: "row" }}
+          gap={{ xs: "30px", md: "60px" }}
           justifyContent={"center"}
         >
           <CustomStack flexDirection={"column"} gap="30px">
@@ -129,25 +123,20 @@ const StatmentOfFaith = () => {
               color={palette.secondary[700]}
               sx={{
                 fontWeight: "500",
-                fontSize: "30px",
+                fontSize: { xs: "24px", md: "30px" },
                 textTransform: "capitalize",
               }}
             >
               The Trinity
             </Typography>
 
-            <CustomStack flexDirection={"column"} gap="0px">
+            <CustomStack flexDirection={"column"} gap="15px">
               <Typography
                 variant="body1"
                 color="initial"
                 sx={{ fontSize: "17px", textAlign: "justify" }}
               >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
+                We affirm the doctrine of the Trinity: one God in three persons—Father, Son, and Holy Spirit. This foundational belief guides our understanding of God's nature and our relationship with Him. We strive to create a learning environment where students understand the profound love and unity within the Godhead.
               </Typography>
             </CustomStack>
           </CustomStack>
@@ -155,7 +144,11 @@ const StatmentOfFaith = () => {
           <Box>
             <ImageContainer
               display={"block"}
-              sx={{ height: "450px", width: "484px", position: "relative" }}
+              sx={{
+                height: { xs: "300px", md: "450px" },
+                width: { xs: "100%", md: "484px" },
+                position: "relative",
+              }}
             >
               <img
                 className="img"
@@ -168,10 +161,10 @@ const StatmentOfFaith = () => {
         </CustomStack>
       </CustomStack>
 
-      {/**  Sinful nature */}
+      {/** Sinful nature */}
       <CustomStack
         sx={{
-          padding: "86px 170px",
+          padding: { xs: "40px 20px", md: "86px 170px" },
         }}
         bgcolor={palette.whites[500]}
         flexDirection={"column"}
@@ -179,51 +172,39 @@ const StatmentOfFaith = () => {
         <CustomStack
           bgcolor={palette.whites[500]}
           alignItems="center"
-          flexDirection={"row"}
-          gap={"60px"}
+          flexDirection={"column"}
+          gap="30px"
           maxWidth={"1100px"}
           justifyContent={"center"}
         >
-          <CustomStack flexDirection={"column"} gap="10px">
+          <Typography
+            variant="h1"
+            color={palette.secondary[700]}
+            sx={{
+              fontWeight: "500",
+              fontSize: { xs: "24px", md: "30px" },
+              textTransform: "capitalize",
+            }}
+          >
+            The sinful nature & Salvation
+          </Typography>
+
+          <CustomStack flexDirection={"column"} gap="20px">
             <Typography
-              variant="h1"
-              color={palette.secondary[700]}
-              sx={{
-                fontWeight: "500",
-                fontSize: "30px",
-                textTransform: "capitalize",
-              }}
+              variant="body1"
+              color="initial"
+              sx={{ fontSize: "17px", textAlign: "justify" }}
             >
-              The sinful nature & Salvation
+              We acknowledge the reality of the sinful nature and its separation from God. However, we also believe in the transformative power of salvation through Jesus Christ. At Yovela, we aim to guide students in understanding this fundamental truth, fostering an environment where they can experience and embrace God's grace and redemptive love.
             </Typography>
 
-            <CustomStack flexDirection={"column"} gap="20px">
-              <Typography
-                variant="body1"
-                color="initial"
-                sx={{ fontSize: "17px", textAlign: "justify" }}
-              >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
-              </Typography>
-
-              <Typography
-                variant="body1"
-                color="initial"
-                sx={{ fontSize: "17px", textAlign: "justify" }}
-              >
-                Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                vestibulum eleifend elementum ac suscipit neque. Pellentesque
-                consectetur sed ut faucibus posuere ut praesent blandit tempor.
-                Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-                Malesuada tellus et sit vulputate malesuada viverra felis nunc
-                suspendisse. Dui netus semper integer id vitae consequat massa.
-              </Typography>
-            </CustomStack>
+            <Typography
+              variant="body1"
+              color="initial"
+              sx={{ fontSize: "17px", textAlign: "justify" }}
+            >
+              Our educational approach integrates this belief into our curriculum, encouraging students to live lives that reflect their understanding of salvation and embody the values of Christian faith.
+            </Typography>
           </CustomStack>
         </CustomStack>
       </CustomStack>
