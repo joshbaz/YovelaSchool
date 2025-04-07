@@ -38,29 +38,30 @@ import exPhoto1 from "../../assets/exPhoto1.png";
 import exPhoto2 from "../../assets/exPhoto2.png";
 import Footer from "../../components/Footer";
 import { Icon } from "@iconify/react";
+
 const cirriculumContent = [
   {
     title: "Ace curriculum school",
     subText:
-      "Accelerated Christian Education curriculum is an individualised, self-paced, biblically based educational programme.",
+      "A globally recognized Christian education program focusing on individualized learning and character development.",
     icon: content_Ace,
   },
   {
     title: "1 on 1 Teaching",
     subText:
-      "Accelerated Christian Education curriculum is an individualised, self-paced, biblically based educational programme.",
+      "Personalized instruction tailored to each student's unique learning pace and needs, fostering deeper understanding.",
     icon: content_Teaching,
   },
   {
     title: "Cutting-Edge Technologies",
     subText:
-      "Accelerated Christian Education curriculum is an individualised, self-paced, biblically based educational programme.",
+      "Integration of modern technology in classrooms to enhance learning experiences and prepare students for the digital age.",
     icon: content_tech,
   },
   {
     title: "Extra Curriculum activities",
     subText:
-      "Accelerated Christian Education curriculum is an individualised, self-paced, biblically based educational programme.",
+      "A wide array of activities including sports, arts, and clubs, promoting holistic development and talent discovery.",
     icon: content_Activities,
   },
 ];
@@ -68,12 +69,10 @@ const cirriculumContent = [
 const accreditationContent = [
   {
     title: "ICCE",
-
     icon: acc_icce,
   },
   {
     title: "ACE",
-
     icon: ace_ace,
   },
 ];
@@ -92,12 +91,14 @@ const exPhotosData = [
     title: "exphoto2",
   },
 ];
+
 const Container = styled(Stack)(({ theme }) => ({
   textDecoration: "none",
   listStyle: "none",
   borderRadius: "4px",
   height: "100%",
   backgroundColor: theme.palette.primary[500],
+  overflowX: "hidden",
 
   ".openSpanText": {
     fontWeight: "400",
@@ -116,9 +117,7 @@ const Container = styled(Stack)(({ theme }) => ({
     width: "12px",
     height: "12px",
     textAlign: "center",
-
     borderRadius: "3px",
-
     color: "#000",
     opacity: 1,
     background: "rgba(0, 0, 0, 0.2)",
@@ -137,18 +136,17 @@ const ImageContainer = styled(Box)({
     objectFit: "cover",
   },
 });
+
 const Home = () => {
   const { palette } = useTheme();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
   const swiperElRef = React.useRef(null);
-  const paginationRef1 = React.useRef(null);
-  const paginationRef2 = React.useRef(null);
 
   return (
     <Container spacing={0}>
-      {/** hero & nav */}
-      <CustomStack flexDirection={"column"} height="100vh !important">
+      {/* Hero & Nav */}
+      <CustomStack flexDirection={"column"} height="auto">
         <Navbar />
         <CustomStack
           flexDirection={"column"}
@@ -156,35 +154,36 @@ const Home = () => {
           m="0"
           p="0"
           spacing={0}
-          height="100vh"
+          height="auto"
         >
-          {/** hero */}
-          <Box height="70vh">
+          {/* Hero */}
+          <Box height={{ xs: "50vh", md: "70vh" }}>
             <Swiper
               scrollbar={{ hide: true }}
               modules={[Scrollbar]}
               className="mySwiper"
             >
               <SwiperSlide>
-                <img src={heroimg} alt="hero" />
+                <img src={heroimg} alt="hero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </SwiperSlide>
             </Swiper>
           </Box>
 
           <CustomStack
-            height={"100%"}
+            height={"auto"}
             display="flex"
             justifyContent="center"
             bgcolor={palette.primary[500]}
             overflow={"hidden"}
+            padding={{ xs: "20px", md: "0" }}
           >
-            <FlexBetween width="50%" bgcolor={palette.primary[500]}>
+            <FlexBetween width={{ xs: "90%", md: "50%" }} bgcolor={palette.primary[500]}>
               <Typography
                 variant="h2"
                 color={palette.whites[500]}
-                sx={{ fontSize: "20px" }}
+                sx={{ fontSize: { xs: "16px", sm: "18px", md: "20px" } }}
               >
-                Enrollment is{" "}
+                Enrollment is
                 <em>
                   <span className="openSpanText">open</span>
                 </em>
@@ -195,7 +194,8 @@ const Home = () => {
                 sx={{
                   color: palette.primary[500],
                   backgroundColor: palette.whites[500],
-                  fontSize: "16px",
+                  fontSize: { xs: "14px", sm: "16px" },
+                  padding: {xs: "8px 12px", sm:"10px 16px"}
                 }}
               >
                 How to Apply
@@ -205,22 +205,22 @@ const Home = () => {
         </CustomStack>
       </CustomStack>
 
-      {/** welcome message  */}
+      {/* Welcome message */}
       <CustomStack
         sx={{
-          padding: "0px 70px",
+          padding: { xs: "20px", md: "0px 70px" },
         }}
         bgcolor={palette.whites[500]}
         flexDirection={"column"}
       >
         <CustomStack
           bgcolor={palette.whites[500]}
-          height="100%"
-          flexDirection={"row"}
+          height="auto"
+          flexDirection={{ xs: "column", md: "row" }}
           alignItems="center"
-          gap={"60px"}
+          gap={{ xs: "20px", sm: "30px", md: "60px" }}
           sx={{
-            padding: "61px 0px",
+            padding: "40px 0px",
           }}
           borderBottom={`1px solid ${palette.tertiary[50]}`}
           justifyContent={"center"}
@@ -228,7 +228,7 @@ const Home = () => {
           <Box>
             <ImageContainer
               display={"block"}
-              sx={{ height: "377px", width: "490px", position: "relative" }}
+              sx={{ height: { xs: "250px", sm: "300px", md: "377px" }, width: { xs: "100%", md: "490px" }, position: "relative" }}
             >
               <img
                 className="img"
@@ -239,69 +239,59 @@ const Home = () => {
             </ImageContainer>
           </Box>
 
-          <CustomStack flexDirection={"column"} gap="30px">
+          <CustomStack flexDirection={"column"} gap="20px">
             <Typography
               variant="h1"
               color={palette.secondary[700]}
-              sx={{ fontWeight: "500", fontSize: "30px" }}
+              sx={{ fontWeight: "500", fontSize: { xs: "20px", sm: "24px", md: "30px" } }}
             >
               Welcome To Yovela
             </Typography>
 
-            <CustomStack flexDirection={"column"} gap="30px">
+            <CustomStack flexDirection={"column"} gap="20px">
               <Typography
                 variant="body1"
                 color="initial"
-                sx={{ fontSize: "17px", textAlign: "justify" }}
+                sx={{ fontSize: { xs: "15px", sm: "16px", md: "17px" }, textAlign: "justify" }}
               >
-                Yovela International Christian school is a private,
-                international school in Kampala, Uganda. Students aged 1 to 18
-                gain individualised and biblically based education to achieve
-                academic excellence with internationally-recognised courses and
-                complementary activities to develop their talents.
+                Yovela International Christian School, nestled in the heart of Kampala, Uganda, offers a unique educational journey for students aged 1 to 18. We provide an individualized, biblically based education, fostering academic excellence and nurturing the diverse talents of our students through internationally recognized courses and enriching extracurricular activities.
               </Typography>
 
               <Typography
                 variant="body1"
                 color="initial"
-                sx={{ fontSize: "17px", textAlign: "justify" }}
+                sx={{ fontSize: { xs: "15px", sm: "16px", md: "17px" }, textAlign: "justify" }}
               >
-                Our experienced educators apply a personalised teaching approach
-                to meet the needs of each individual.Thus promoting experiential
-                learning opportunities for all students. The effectiveness of
-                our child-centred, biblically-based methodology ensures students
-                are well-prepared to thrive in the world and have an
-                appreciation of social responsibility.
+                Our dedicated educators employ a personalized teaching approach, ensuring each student's needs are met and promoting experiential learning. We are committed to a child-centered, biblically grounded methodology, preparing students to excel in a globalized world while cultivating a strong sense of social responsibility.
               </Typography>
             </CustomStack>
           </CustomStack>
         </CustomStack>
 
-        {/** why choose the school  */}
-
+        {/* Why choose the school */}
         <CustomStack
           bgcolor={palette.whites[500]}
-          height="100%"
+          height="auto"
           sx={{
-            padding: "61px 0px",
+            padding: "40px 0px",
           }}
-          flexDirection={"row"}
+          flexDirection={"column"}
           alignItems="center"
-          gap={"60px"}
+          gap={"40px"}
         >
           <CustomStack
             width="100%"
             flexDirection={"column"}
             alignItems={"center"}
             justifyContent={"center"}
-            gap="35px"
+            gap="25px"
           >
             <Typography
               variant="h1"
               color={palette.secondary[700]}
               sx={{
                 fontWeight: "500",
-                fontSize: "30px",
+                fontSize: { xs: "20px", sm: "24px", md: "30px" },
                 textAlign: "center !important",
               }}
             >
@@ -316,7 +306,7 @@ const Home = () => {
                 justifyContent: "center",
               }}
             >
-              <CustomStack justifyContent={"space-between"} width="90%">
+              <CustomStack justifyContent={"space-around"} width={{ xs: "100%", md: "90%" }} flexDirection={{ xs: "column", md: "row" }} alignItems={"center"}>
                 {cirriculumContent.map((data, index) => {
                   return (
                     <CustomStack
@@ -324,37 +314,37 @@ const Home = () => {
                       flexDirection={"column"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      gap="20px"
-                      width="260px"
+                      gap="15px"
+                      width={{ xs: "100%", md: "260px" }}
                     >
                       <Box
                         bgcolor={palette.primary[100]}
                         sx={{
-                          width: "160px",
-                          height: "160px",
+                          width: "120px",
+                          height: "120px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           borderRadius: "15%",
                         }}
                       >
-                        <img src={data.icon} alt={data.title} />
+                        <img src={data.icon} alt={data.title} style={{ maxWidth: "80%", maxHeight: "80%" }} />
                       </Box>
 
                       <CustomStack
                         flexDirection={"column"}
                         alignItems={"center"}
                         justifyContent={"center"}
-                        gap="20px"
+                        gap="15px"
                       >
                         <Typography
                           variant="h4"
                           color="initial"
                           sx={{
-                            fontSize: "18px",
+                            fontSize: "16px",
                             textTransform: "uppercase",
                             textAlign: "center",
-                            height: "46px",
+                            height: "40px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -366,7 +356,7 @@ const Home = () => {
                         <Typography
                           variant="body1"
                           color="initial"
-                          sx={{ textAlign: "center", fontSize: "16px" }}
+                          sx={{ textAlign: "center", fontSize: "15px" }}
                         >
                           {data.subText}
                         </Typography>
@@ -380,10 +370,10 @@ const Home = () => {
         </CustomStack>
       </CustomStack>
 
-      {/** slider for types */}
+      {/* Slider for types */}
       <Box
         sx={{
-          padding: "61px 70px",
+          padding: { xs: "20px", md: "61px 70px" },
         }}
         bgcolor={palette.tertiary[500]}
       >
@@ -395,7 +385,6 @@ const Home = () => {
               modules={[Navigation, Pagination]}
               pagination={{
                 clickable: true,
-
                 renderBullet: function (index, className) {
                   return '<span class="' + className + '">' + "</span>";
                 },
@@ -412,29 +401,29 @@ const Home = () => {
                 <CustomStack
                   bgcolor={palette.tertiary[500]}
                   width="100%"
-                  flexDirection={"row"}
+                  flexDirection={{ xs: "column", md: "row" }}
                   justifyContent={"space-between"}
                   alignItems={"center"}
                   gap="20px"
                 >
                   <Box
                     sx={{
-                      height: "360px",
-                      width: "540px",
+                      height: { xs: "200px", sm: "250px", md: "360px" },
+                      width: { xs: "100%", md: "540px" },
                       position: "relative",
                     }}
                   >
-                    <img src={earlyYears} alt="hero" />
+                    <img src={earlyYears} alt="hero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </Box>
                   <CustomStack
                     flexDirection={"column"}
-                    gap="30px"
-                    width={"530px"}
+                    gap="20px"
+                    width={{ xs: "100%", md: "530px" }}
                   >
                     <Typography
                       variant="h1"
                       color={palette.primary[50]}
-                      sx={{ fontWeight: "300", fontSize: "30px" }}
+                      sx={{ fontWeight: "300", fontSize: { xs: "20px", sm: "24px", md: "30px" } }}
                     >
                       Early Years
                     </Typography>
@@ -442,12 +431,9 @@ const Home = () => {
                     <Typography
                       variant="body1"
                       color={palette.whites[500]}
-                      sx={{ fontSize: "17px", textAlign: "center" }}
+                      sx={{ fontSize: "16px", textAlign: "center" }}
                     >
-                      Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                      vestibulum eleifend elementum ac suscipit neque.
-                      Pellentesque consectetur sed ut faucibus posuere ut
-                      praesent blandit tempor.
+                      Our Early Years program at Yovela International Christian School provides a nurturing and stimulating environment for young learners. We focus on developing foundational skills through play-based activities, fostering curiosity and a love for learning.
                     </Typography>
                   </CustomStack>
                 </CustomStack>
@@ -457,42 +443,39 @@ const Home = () => {
                 <CustomStack
                   bgcolor={palette.tertiary[500]}
                   width="100%"
-                  flexDirection={"row"}
+                  flexDirection={{ xs: "column", md: "row" }}
                   justifyContent={"space-between"}
                   alignItems={"center"}
                   gap="20px"
                 >
                   <Box
                     sx={{
-                      height: "360px",
-                      width: "540px",
+                      height: { xs: "200px", sm: "250px", md: "360px" },
+                      width: { xs: "100%", md: "540px" },
                       position: "relative",
                     }}
                   >
-                    <img src={earlyYears} alt="hero" />
+                    <img src={earlyYears} alt="hero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </Box>
                   <CustomStack
                     flexDirection={"column"}
-                    gap="30px"
-                    width={"530px"}
+                    gap="20px"
+                    width={{ xs: "100%", md: "530px" }}
                   >
                     <Typography
                       variant="h1"
                       color={palette.primary[50]}
-                      sx={{ fontWeight: "300", fontSize: "30px" }}
+                      sx={{ fontWeight: "300", fontSize: { xs: "20px", sm: "24px", md: "30px" } }}
                     >
-                      Early Years
+                      Primary & Secondary Education
                     </Typography>
 
                     <Typography
                       variant="body1"
                       color={palette.whites[500]}
-                      sx={{ fontSize: "17px", textAlign: "center" }}
+                      sx={{ fontSize: "16px", textAlign: "center" }}
                     >
-                      Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-                      vestibulum eleifend elementum ac suscipit neque.
-                      Pellentesque consectetur sed ut faucibus posuere ut
-                      praesent blandit tempor.
+                      Our primary and secondary programs build on the strong foundation laid in the early years. We emphasize academic rigor, critical thinking, and character development, preparing students for higher education and future success.
                     </Typography>
                   </CustomStack>
                 </CustomStack>
@@ -500,7 +483,7 @@ const Home = () => {
             </Swiper>
           </CustomStack>
 
-          {/** navs */}
+          {/* Navs */}
           <Box
             className="swiper-button-prev"
             ref={navigationPrevRef}
@@ -508,8 +491,7 @@ const Home = () => {
             sx={{
               position: "absolute",
               top: "50%",
-              left: "-1.5rem",
-
+              left: { xs: "0", md: "-1.5rem" },
               display: "flex",
               alignItems: "center",
             }}
@@ -525,73 +507,70 @@ const Home = () => {
               position: "absolute",
               top: "50%",
               color: palette.primary[500],
-              right: "-1.5rem",
-
+              right: { xs: "0", md: "-1.5rem" },
               display: "flex",
               alignItems: "center",
             }}
           >
             <Icon icon="bi:arrow-right-short" width="40" height="40" />
           </Box>
-
-          {/** swiper pagination */}
         </CustomStack>
       </Box>
 
-      {/** Accreditations */}
-
+      {/* Accreditations */}
       <CustomStack
         flexDirection={"column"}
         sx={{
-          padding: "61px 70px",
+          padding: { xs: "20px", md: "61px 70px" },
         }}
-        gap={"30px"}
+        gap={"20px"}
         alignItems="center"
         bgcolor={"#FFFDFC"}
       >
         <Typography
           variant="h1"
           color={palette.secondary[700]}
-          sx={{ fontWeight: "300", fontSize: "30px" }}
+          sx={{ fontWeight: "300", fontSize: { xs: "20px", sm: "24px", md: "30px" } }}
         >
           Accreditations
         </Typography>
 
-        <CustomStack>
+        <CustomStack flexDirection={"row"} flexWrap={"wrap"} justifyContent={"center"} gap={"15px"}>
           {accreditationContent.map((data, index) => {
             return (
-              <Box key={index}>
-                <img src={data.icon} alt={data.title} />
+              <Box key={index} sx={{ maxWidth: "150px", maxHeight: "80px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src={data.icon} alt={data.title} style={{ maxWidth: "100%", maxHeight: "100%" }} />
               </Box>
             );
           })}
         </CustomStack>
       </CustomStack>
 
-      {/** word from principal */}
+      {/* Word from principal */}
       <CustomStack
-        flexDirection={"row"}
+        flexDirection={{ xs: "column", md: "row" }}
         bgcolor={palette.whites[500]}
         sx={{
-          padding: "61px 90px",
+          padding: { xs: "20px", md: "61px 90px" },
         }}
-        gap="80px"
+        gap={{ xs: "20px", sm: "30px", md: "80px" }}
         justifyContent={"center"}
+        alignItems={"center"}
       >
         <Avatar
           alt="principal"
           src={PrincipalPhoto}
-          sx={{ width: "240px", height: "240px" }}
+          sx={{ width: { xs: "120px", sm: "150px", md: "240px" }, height: { xs: "120px", sm: "150px", md: "240px" } }}
         />
 
-        <CustomStack maxWidth="811px" flexDirection={"column"} gap="25px ">
-          <CustomStack flexDirection="column" gap="18px">
+        <CustomStack maxWidth="811px" flexDirection={"column"} gap="20px ">
+          <CustomStack flexDirection="column" gap="15px">
             <Typography
               variant="h3"
               color={palette.secondary[700]}
               sx={{
                 fontWeight: "500",
-                fontSize: "30px",
+                fontSize: { xs: "20px", sm: "24px", md: "30px" },
                 textTransform: "capitalize",
               }}
             >
@@ -601,14 +580,9 @@ const Home = () => {
             <Typography
               variant="body1"
               color={palette.tertiary[400]}
-              sx={{ fontSize: "18px", textAlign: "justify" }}
+              sx={{ fontSize: { xs: "15px", sm: "16px", md: "18px" }, textAlign: "justify" }}
             >
-              Lorem ipsum dolor sit amet consectetur. Et mi urna libero
-              vestibulum eleifend elementum ac suscipit neque. Pellentesque
-              consectetur sed ut faucibus posuere ut praesent blandit tempor.
-              Maecenas at orci arcu pretium tempus risus velit pharetra sit.
-              Malesuada tellus et sit vulputate malesuada viverra felis nunc
-              suspendisse. Dui netus semper integer id vitae consequat massa.
+              At Yovela International Christian School, we are committed to nurturing not just academic excellence, but also the character and spiritual growth of each student. We believe in providing a safe, supportive, and stimulating environment where students can discover their God-given talents and prepare to make a positive impact on the world.
             </Typography>
           </CustomStack>
           <Typography
@@ -617,7 +591,7 @@ const Home = () => {
             sx={{
               textTransform: "uppercase",
               fontWeight: "400",
-              fontSize: "18px",
+              fontSize: "16px",
             }}
           >
             RESUL USTAALIOGU — principal
@@ -625,33 +599,36 @@ const Home = () => {
         </CustomStack>
       </CustomStack>
 
-      {/** slider for exciting acitivities */}
-
-      <Box bgcolor={palette.tertiary[500]} height="350px">
+      {/* Slider for exciting activities */}
+      <Box bgcolor={palette.tertiary[500]} height="auto" padding={"20px 0"}>
         <Swiper
           modules={[Navigation, Pagination]}
           navigation
           pagination={{
             clickable: true,
-
             renderBullet: function (index, className) {
               return '<span class="' + className + '">' + "</span>";
             },
           }}
-          slidesPerView={2}
+          slidesPerView={1}
+          breakpoints={{
+            600: {
+              slidesPerView: 2,
+            }
+          }}
           className="mySwiper"
         >
           {exPhotosData.map((data, index) => {
             return (
               <SwiperSlide key={index}>
-                <img src={data.image} alt={data.title} />
+                <img src={data.image} alt={data.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </Box>
 
-      {/** footer */}
+      {/* Footer */}
       <Footer />
     </Container>
   );

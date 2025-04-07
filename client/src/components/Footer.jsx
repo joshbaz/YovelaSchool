@@ -1,7 +1,6 @@
 import CustomStack from "./CustomStack";
 import { useTheme, Box, Typography, Avatar } from "@mui/material";
 import FooterLogo from "../assets/YovelaFooterLogo.svg";
-
 import { Icon } from "@iconify/react";
 
 const FooterLinks = [
@@ -49,23 +48,23 @@ const Footer = () => {
   return (
     <CustomStack bgcolor={palette.tertiary[500]} flexDirection={"column"}>
       <CustomStack
-        flexDirection={"row"}
+        flexDirection={{ xs: "column", md: "row" }}
         alignItems="center"
         justifyContent="center"
-        gap="129px"
+        gap={{ xs: "50px", md: "129px" }}
         sx={{
-          padding: "53px 0 88px 0",
+          padding: "53px 20px 88px 20px",
           borderBottom: `1px solid ${palette.primary[50]}`,
         }}
       >
-        {/** footer logo & socials  */}
+        {/* footer logo & socials */}
         <CustomStack
           flexDirection={"column"}
           alignItems="center"
           justifyContent="center"
           sx={{
-            width: "192px",
-            height: "214px",
+            width: { xs: "100%", md: "192px" },
+            height: "auto",
           }}
           gap="20px"
         >
@@ -73,13 +72,13 @@ const Footer = () => {
             src={FooterLogo}
             alt="Yovela Logo"
             sx={{
-              height: [50, 100, 140],
-              width: [50, 100, 140],
+              height: { xs: 100, md: 140 },
+              width: { xs: 100, md: 140 },
               marginBottom: "0.5rem",
             }}
           />
 
-          <CustomStack gap="12px">
+          <CustomStack gap="12px" flexDirection={"row"}>
             {FooterLinks.map((data, index) => {
               return (
                 <Box
@@ -102,15 +101,14 @@ const Footer = () => {
           </CustomStack>
         </CustomStack>
 
-        {/** footer links */}
-
-        <CustomStack flexDirection={"row"} gap="20px">
+        {/* footer links */}
+        <CustomStack flexDirection={{ xs: "column", md: "row" }} gap="20px">
           {FooterNavItem.map((data, index) => {
             return (
               <CustomStack
                 key={`${index}-${data.title}`}
-                width="255px"
-                height="214px"
+                width={{ xs: "100%", md: "255px" }}
+                height="auto"
                 padding={"19px 20px"}
                 flexDirection={"column"}
                 gap="17px"
@@ -150,8 +148,8 @@ const Footer = () => {
             );
           })}
           <CustomStack
-            width="255px"
-            height="214px"
+            width={{ xs: "100%", md: "255px" }}
+            height="auto"
             padding={"19px 20px"}
             flexDirection={"column"}
             gap="17px"

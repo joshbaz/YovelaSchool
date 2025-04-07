@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import FlexBetween from "./FlexBetween";
 import Logos from "../assets/YovelaColored.svg";
 import { Icon } from "@iconify/react";
-import { useTheme, Box, Avatar, Typography, Button } from "@mui/material";
-
+import { useTheme, Box, Avatar, Typography, Button, IconButton } from "@mui/material";
 import MenuItems from "./MenuItems";
 import { useNavigate } from "react-router-dom";
 
@@ -77,8 +76,10 @@ const menuData = [
 
 const Navbar = () => {
   const { palette } = useTheme();
-  const [navSolid, setNavSolid] = React.useState(false);
+  const [navSolid, setNavSolid] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   let routeNavigate = useNavigate();
+
   const navSolidChange = () => {
     if (window.scrollY >= 120) {
       if (!navSolid) setNavSolid(true);
@@ -86,10 +87,16 @@ const Navbar = () => {
       setNavSolid(false);
     }
   };
+
   window.addEventListener("scroll", navSolidChange);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <Box>
+      {/* Top Navbar Section (Logo and Portal Logins) */}
       <FlexBetween
         mb="0"
         p="0rem 2rem"
@@ -99,7 +106,7 @@ const Navbar = () => {
           height: [50, 100, 120],
         }}
       >
-        {/** logo */}
+        {/* Logo */}
         <Avatar
           alt="Yovela School Logo"
           onClick={() => routeNavigate("/")}
@@ -111,8 +118,8 @@ const Navbar = () => {
           }}
         />
 
-        {/** portal logins */}
-        <FlexBetween gap="1.6rem">
+        {/* Portal Logins and Book Appointment (Desktop) */}
+        <FlexBetween gap="1.6rem" sx={{ display: { xs: "none", md: "flex" } }}>
           <Button>
             <FlexBetween
               gap="0.6rem"
@@ -137,8 +144,17 @@ const Navbar = () => {
             Book Appointment
           </Button>
         </FlexBetween>
+
+        {/* Mobile Menu Icon */}
+        <IconButton
+          onClick={toggleMobileMenu}
+          sx={{ display: { xs: "block", md: "none" }, color: palette.tertiary[500] }}
+        >
+          {isMobileMenuOpen ? <Icon icon="eva:close-fill" /> : <Icon icon="charm:menu-hamburger" />}
+        </IconButton>
       </FlexBetween>
 
+      {/* Main Navigation Section */}
       <Box
         sx={{
           width: "100%",
@@ -171,55 +187,99 @@ const Navbar = () => {
               width: "100%",
             }}
           >
-            <ul>
+            <FlexBetween
+              fontSize={"1.2rem"}
+              color={palette.tertiary[500]}
+              justifyContent={
+                navSolid ? "space-between" : "center !important"
+              }
+              sx={{
+                height: [50, 50, 50],
+                p: "0rem 2rem",
+                width: "100%",
+              }}
+            >
+              {/* Logo (Visible on scroll) */}
+              {navSolid && (
+                <Avatar
+                  alt="Yovela School Logo"
+                  onClick={() => routeNavigate("/")}
+                  src={Logos}
+                  sx={{
+                    height: [50, 80, 80],
+                    width: [50, 80, 80],
+                    marginBottom: "0.3rem",
+                  }}
+                />
+              )}
+
+              {/* Desktop Navigation Menu */}
               <FlexBetween
+                gap="0.6rem"
                 fontSize={"1.2rem"}
                 color={palette.tertiary[500]}
-                justifyContent={
-                  navSolid ? "space-between" : "center !important"
-                }
-                sx={{
-                  height: [50, 50, 50],
-                }}
-                p="0rem 2rem"
-                width="100%"
+                sx={{ display: { xs: "none", md: "flex" } }}
               >
-                {/** logo */}
-                {navSolid && (
-                  <Avatar
-                    alt="Yovela School Logo"
-                    onClick={() => routeNavigate("/")}
-                    src={Logos}
-                    sx={{
-                      height: [50, 80, 80],
-                      width: [50, 80, 80],
-                      marginBottom: "0.3rem",
-                    }}
-                  />
-                )}
-
-                <FlexBetween
-                  gap="0.6rem"
-                  fontSize={"1.2rem"}
-                  color={palette.tertiary[500]}
-                >
-                  {menuData.map((data, index) => {
-                    return (
-                      <MenuItems navsolid={navSolid} items={data} key={index} />
-                    );
-                  })}
-                </FlexBetween>
-
-                {navSolid && (
-                  <Button
-                    variant="contained"
-                    onClick={() => routeNavigate("/appointment")}
-                  >
-                    Book Appointment
-                  </Button>
-                )}
+                {menuData.map((data, index) => (
+                  <MenuItems navsolid={navSolid} items={data} key={index} />
+                ))}
               </FlexBetween>
-            </ul>
+
+              {/* Book Appointment (Visible on scroll, Desktop) */}
+              {navSolid && (
+                <Button
+                  variant="contained"
+                  onClick={() => routeNavigate("/appointment")}
+                  sx={{ display: { xs: "none", md: "block" } }}
+                >
+                  Book Appointment
+                </Button>
+              )}
+            </FlexBetween>
+
+            {/* Mobile Menu Dropdown */}
+            {isMobileMenuOpen && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  width: "100%",
+                  bgcolor: palette.whites[500],
+                  p: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1,
+                  zIndex:100,
+                }}
+              >
+                <Button>
+                  <FlexBetween
+                    gap="0.6rem"
+                    fontSize={"1.2rem"}
+                    color={palette.tertiary[500]}
+                  >
+                    <Icon icon="bi:people" />
+                    <Typography
+                      variant="h5"
+                      sx={{ textTransform: "capitalize" }}
+                      color={palette.tertiary[500]}
+                    >
+                      Portal Log In
+                    </Typography>
+                  </FlexBetween>
+                </Button>
+                {menuData.map((data, index) => (
+                  <MenuItems navsolid={navSolid} items={data} key={index} isMobile={true} />
+                ))}
+                <Button
+                  variant="contained"
+                  onClick={() => routeNavigate("/appointment")}
+                >
+                  Book Appointment
+                </Button>
+              </Box>
+            )}
           </nav>
         </Box>
       </Box>
