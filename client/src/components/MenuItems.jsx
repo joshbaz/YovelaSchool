@@ -1,5 +1,5 @@
 import { Button, useTheme } from "@mui/material";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Dropdown from "./Dropdown";
 import { styled } from "@mui/system";
@@ -11,43 +11,40 @@ const MenuItemWrap = styled("li")(({ theme }) => ({
   borderRadius: "4px",
 }));
 
-const MenuItems = ({ items, navsolid }) => {
+const MenuItems = ({
+  items,
+  navsolid,
+  onMouseEnter,
+  onMouseLeave,
+  hoveredArea,
+  showSubMenu,
+  onSubMenuMouseEnter,
+  onSubMenuMouseLeave,
+  mobile,
+}) => {
   const { palette } = useTheme();
-  const [dropdown, setDropDown] = React.useState(false);
+  const [dropdown, setDropDown] = useState(false);
+  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState(false);
   let location = useLocation();
-  let ref = React.useRef();
-  console.log("location", location);
-  React.useEffect(() => {
-    const handler = (event) => {
-      if (dropdown && ref.current && !ref.current.contains(event.target)) {
-        setDropDown(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    document.addEventListener("touchstart", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-      document.removeEventListener("touchstart", handler);
-    };
-  }, [dropdown]);
+  let ref = useRef(null);
 
-  const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropDown(true);
+  useEffect(() => {
+    if (showSubMenu && hoveredArea === items.areaControls) {
+      setDropDown(true);
+    } else {
+      setDropDown(false);
+    }
+  }, [showSubMenu, hoveredArea, items.areaControls]);
+
+  const handleMobileSubMenuToggle = () => {
+    setMobileSubMenuOpen(!mobileSubMenuOpen);
   };
 
-  const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropDown(false);
-  };
-
-  const onMouseClick = () => {
-    setDropDown(true);
-  }
   return (
     <MenuItemWrap
       ref={ref}
-      onMouseEnter={onMouseEnter}
+      onMouseEnter={mobile ? undefined : (onMouseEnter ? () => onMouseEnter(items.areaControls) : undefined)}
       onMouseLeave={onMouseLeave}
-      onClick={onMouseClick}
     >
       {items.subData ? (
         <>
@@ -62,20 +59,15 @@ const MenuItems = ({ items, navsolid }) => {
             <Button
               aria-haspopup="menu"
               aria-expanded={dropdown ? "true" : "false"}
-              onClick={() => setDropDown((prev) => !prev)}
-              endIcon={<KeyboardArrowDownIcon />}
+              endIcon={mobile ? undefined : <KeyboardArrowDownIcon />}
+              onClick={mobile ? handleMobileSubMenuToggle : undefined} // Ensure onClick is set correctly
               sx={{
                 color: navsolid ? palette.primary[500] : palette.tertiary[500],
                 height: "100%",
                 backgroundColor: "inherit",
-
                 "&:hover": {
-                  color: navsolid
-                    ? palette.primary[900]
-                    : palette.tertiary[500],
-                  bgcolor: navsolid
-                    ? palette.primary[100]
-                    : palette.tertiary[50],
+                  color: navsolid ? palette.primary[900] : palette.tertiary[500],
+                  bgcolor: navsolid ? palette.primary[100] : palette.tertiary[50],
                   opacity: "100%",
                 },
               }}
@@ -83,11 +75,11 @@ const MenuItems = ({ items, navsolid }) => {
               {items.title}
             </Button>
           </NavLink>
-          <Dropdown
-            submenus={items.subData}
-            dropdown={dropdown}
-            navsolid={navsolid}
-          />
+          {(mobile && mobileSubMenuOpen) || (!mobile && dropdown) ? (
+            <div onMouseEnter={onSubMenuMouseEnter} onMouseLeave={onSubMenuMouseLeave}>
+              <Dropdown submenus={items.subData} dropdown={dropdown} navsolid={navsolid} />
+            </div>
+          ) : null}
         </>
       ) : (
         <NavLink
